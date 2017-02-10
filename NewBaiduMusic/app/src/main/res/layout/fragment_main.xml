@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_mainfragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mainfragment_tablayout_height"
+        android:orientation="horizontal"
+        android:background="#11ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <ImageButton
+            android:background="@null"
+            android:layout_width="@dimen/mainfragment_tablayout_height"
+            android:layout_height="match_parent"
+            android:padding="@dimen/mainfragment_btn_padding"
+            android:src="@drawable/mainmore"/>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayout_mainfragment"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            app:tabIndicatorHeight="0dp"
+            app:tabTextColor="@color/gray"
+            app:tabSelectedTextColor="@color/white"
+            />
+
+        <ImageButton
+            android:background="@null"
+
+            android:layout_width="@dimen/mainfragment_tablayout_height"
+            android:layout_height="match_parent"
+            android:src="@drawable/mainsearch"
+            android:padding="@dimen/mainfragment_btn_padding"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
