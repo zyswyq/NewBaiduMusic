@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="item_list_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_toRightOf">@id/img_listItemList</item>
+        <item name="android:textColor">@color/graytext</item>
+        <item name="android:textSize">@dimen/listItem_tv_textsize</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_marginBottom">@dimen/listItem_tv_margintop</item>
+        <item name="android:maxLength">30</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>

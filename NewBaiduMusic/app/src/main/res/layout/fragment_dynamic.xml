@@ -4,6 +4,10 @@
     android:layout_height="match_parent">
     <include layout="@layout/include_mainfragment"/>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/trends_guide_img"/>
     <TextView
         android:text="动态"
         android:textSize="80sp"

@@ -47,4 +47,8 @@ public class URLBean {
      *
      */
 
+    public static String LIST_DATA="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.billboard.billCategory&format=json&kflag=2";
+
+    public static String DYNAMIC_DATA="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.ugcfriend.getList&format=json&param=Vzj1F5tjOnKDcBtupE2xkK1h0%2FBmOlwiPpt7MdO6UD0urZf0rC9NZeQrfa2qCikoGqN8AC%2FEYvNNLX4LkJH%2BjA%3D%3D&timestamp=1486632418&sign=eb7efd3c076c7f7c4cd2402b364d9c2f";
+
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/listItem_height">
+
+    <ImageView
+        android:id="@+id/img_listItemList"
+        android:layout_width="@dimen/listItem_img_width"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/listItem_img_padding"
+        android:layout_marginBottom="@dimen/listItem_img_padding"
+        android:layout_marginRight="@dimen/listItem_img_padding"
+        android:layout_marginLeft="@dimen/listItem_img_marginleft"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:layout_width="@dimen/listItem_play_width"
+        android:layout_height="@dimen/listItem_play_width"
+        android:layout_marginTop="@dimen/listItem_play_margin"
+        android:layout_marginLeft="@dimen/listItem_play_marginleft"
+        android:src="@mipmap/bt_widget_play_press"
+        android:padding="@dimen/listItem_play_padding"
+        android:background="@mipmap/btn_online_topic_detail_playall_normal"
+        />
+
+    <TextView
+        android:id="@+id/tv_listTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/img_listItemList"
+        android:textColor="@color/black"
+        android:layout_marginBottom="@dimen/listItem_title_margintop"
+        android:layout_marginTop="@dimen/listItem_title_margintop"
+        android:textSize="@dimen/listItem_title_textsize" />
+
+    <TextView
+        android:id="@+id/tv_listFirst"
+        android:layout_below="@id/tv_listTitle"
+        style="@style/item_list_tv"
+        android:drawableLeft="@mipmap/img_top_number_1" />
+
+    <TextView
+        android:id="@+id/tv_listSecond"
+        android:layout_below="@id/tv_listFirst"
+        style="@style/item_list_tv"
+        android:drawableLeft="@mipmap/img_top_number_2" />
+
+
+    <TextView
+        android:id="@+id/tv_listThird"
+        android:layout_below="@id/tv_listSecond"
+        style="@style/item_list_tv"
+        android:drawableLeft="@mipmap/img_top_number_3" />
+
+    <ImageView
+        android:layout_width="@dimen/listItem_to_width"
+        android:layout_height="@dimen/listItem_to_width"
+        android:scaleType="fitXY"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/listItem_to_margintight"
+        android:src="@mipmap/triangle"/>
+
+
+</RelativeLayout>

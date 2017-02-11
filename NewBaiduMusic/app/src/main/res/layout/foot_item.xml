@@ -3,8 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/listView_ListFragment"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="@dimen/mainActivty_below_height"/>
 </LinearLayout>
