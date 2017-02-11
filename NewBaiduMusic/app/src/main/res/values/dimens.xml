@@ -27,6 +27,46 @@
 
 
     <dimen name="user_back_height">160dp</dimen>
+    <dimen name="user_clickliner_height">55dp</dimen>
+    <dimen name="user_tvliner_height">20dp</dimen>
+    <dimen name="user_try_img_width">20dp</dimen>
+    <dimen name="user_try_img_marginright">25dp</dimen>
+    <dimen name="user_try_img_marginbottom">0dp</dimen>
+    <dimen name="user_try_tv_textsize">13sp</dimen>
+    <dimen name="user_try_tv_marginbottom">10dp</dimen>
+    <dimen name="user_try_tv_marginright">10dp</dimen>
+    <dimen name="user_sign_img_width">40dp</dimen>
+    <dimen name="user_sign_img_margin">10dp</dimen>
+    <dimen name="user_sign_tv1_textsize">10sp</dimen>
+    <dimen name="user_sign_tv1_marginbelow">15dp</dimen>
+    <dimen name="user_textsize">15sp</dimen>
+    <dimen name="user_changetextsize">12sp</dimen>
+    <dimen name="user_playbtn_width">20dp</dimen>
+
+
+    <dimen name="margin10">10dp</dimen>
+    <dimen name="margin20">20dp</dimen>
+    <dimen name="margin15">15dp</dimen>
+    <dimen name="margin5">5dp</dimen>
+
+
+
+    <dimen name="songmenu_item_mainheight">250dp</dimen>
+    <dimen name="songmenu_item_mainimgwidth">180dp</dimen>
+    <dimen name="songmenu_item_mainimgmargin">10dp</dimen>
+    <dimen name="songmenu_item_titlesize">12sp</dimen>
+    <dimen name="songmenu_item_playmargin">140dp</dimen>
+    <dimen name="songmenu_item_playwidth">20dp</dimen>
+    <dimen name="songmenu_item_listenmargin">10dp</dimen>
+
+    <dimen name="songmenu_main_lineheight">57dp</dimen>
+    <dimen name="songmenu_main_imgheight">20dp</dimen>
+    <dimen name="songmenu_main_imgwidth">5dp</dimen>
+    <dimen name="songmenu_main_imgmarginleft">10dp</dimen>
+    <dimen name="songmenu_main_imgmargintop">20dp</dimen>
+    <dimen name="songmenu_main_tvmargin">10dp</dimen>
+
+
 
 
 

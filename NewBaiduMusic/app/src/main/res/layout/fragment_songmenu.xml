@@ -3,9 +3,63 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="歌单"
-        android:textSize="80sp"
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/songmenu_main_lineheight"
+       android:orientation="horizontal">
+       <ImageView
+           android:layout_width="@dimen/songmenu_main_imgwidth"
+           android:layout_height="@dimen/songmenu_main_imgheight"
+           android:src="@mipmap/bt_scan_begin_nor"
+           android:layout_marginLeft="@dimen/songmenu_main_imgmarginleft"
+           android:layout_marginTop="@dimen/songmenu_main_imgmargintop"
+           android:layout_marginRight="@dimen/songmenu_main_imgmarginleft"
+           android:scaleType="fitXY"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:textSize="@dimen/user_textsize"
+           android:text="全部  "
+           android:drawableRight="@mipmap/godown"
+           android:textColor="@color/black"
+           android:layout_marginRight="@dimen/songmenu_main_imgmarginleft"
+           android:gravity="center"/>
+       <!--<ImageView-->
+           <!--android:layout_width="wrap_content"-->
+           <!--android:layout_height="match_parent"-->
+           <!--android:src="@mipmap/godown"-->
+           <!--android:layout_gravity="center"/>-->
+       <View
+           android:layout_width="0dp"
+           android:layout_height="1dp"
+           android:layout_weight="1"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:text="@string/songmenu_tv1"
+           android:textColor="@color/mainFragmentTablayout"
+           android:gravity="center"/>
+       <View
+           android:layout_width="1dp"
+           android:layout_height="@dimen/songmenu_main_imgheight"
+           android:background="@color/gray"
+           android:layout_marginTop="@dimen/songmenu_main_imgmargintop"
+           android:layout_marginLeft="@dimen/songmenu_main_imgmarginleft"
+           android:layout_marginRight="@dimen/songmenu_main_imgmarginleft"/>
+       <TextView
+           android:text="@string/songmenu_tv2"
+           android:layout_width="wrap_content"
+           android:gravity="center"
+           android:textColor="@color/graytext"
+           android:layout_height="match_parent"
+           android:layout_marginRight="@dimen/songmenu_main_imgmarginleft"/>
+
+   </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_songmenu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/songmenu_item_mainimgmargin"
+        android:layout_weight="1"/>
 </LinearLayout>

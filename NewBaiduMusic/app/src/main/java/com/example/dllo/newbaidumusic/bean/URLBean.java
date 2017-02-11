@@ -51,4 +51,6 @@ public class URLBean {
 
     public static String DYNAMIC_DATA="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.ugcfriend.getList&format=json&param=Vzj1F5tjOnKDcBtupE2xkK1h0%2FBmOlwiPpt7MdO6UD0urZf0rC9NZeQrfa2qCikoGqN8AC%2FEYvNNLX4LkJH%2BjA%3D%3D&timestamp=1486632418&sign=eb7efd3c076c7f7c4cd2402b364d9c2f";
 
+    public static String SONGMENU_HOTDATA="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.ugcdiy.getChanneldiy&param=aUeJzjQd0Bxv60bsMl1nzvktSPLjc5EcGxFAt77r3ORvfYOi0G0UiMU15Gu9rmiLXpXaecx%2BVhS3VNWrDDHaz%2FdPLIB52H4GjQR8wkaLFrrkLECGMiGJkF9toxnAK5KX&timestamp=1486632431&sign=39afa305d4a82eb67ac1f191f47f64e6";
+
 }

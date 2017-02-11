@@ -5,11 +5,12 @@
     <color name="colorAccent">#FF4081</color>
     <color name="mainFragmentTablayout">#09b9ef</color>
     <color name="white">#fff</color>
-    <color name="black">#000</color>
+    <color name="black">#454242</color>
     <color name="gray">#d9d9d9</color>
     <color name="mainActivityTab">#ddffffff</color>
     <color name="graytext">#aba8a8</color>
     <color name="king">#e6bf5d</color>
+    <color name="littlegray">#dfdddd</color>
 
 
 </resources>

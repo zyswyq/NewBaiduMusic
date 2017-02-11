@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/songmenu_item_mainheight">
+
+    <ImageView
+        android:id="@+id/img_songmenu_main"
+        android:layout_width="@dimen/songmenu_item_mainimgwidth"
+        android:layout_height="@dimen/songmenu_item_mainimgwidth"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"
+        android:layout_marginRight="@dimen/songmenu_item_mainimgmargin"/>
+
+
+
+    <TextView
+        android:id="@+id/tv_songmenu_title"
+        android:layout_width="@dimen/songmenu_item_mainimgwidth"
+        android:textSize="@dimen/songmenu_item_titlesize"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_songmenu_main"
+        android:text="dsdasdsa"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/songmenu_item_mainimgmargin"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_songmenu_create"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/songmenu_item_titlesize"
+        android:layout_height="wrap_content"
+        android:textColor="@color/graytext"
+        android:layout_below="@id/tv_songmenu_title"
+        android:text="dsadas"
+        />
+    <TextView
+        android:id="@+id/tv_songmenu_listen"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/songmenu_item_titlesize"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_songmenu_title"
+        android:text="dsds"
+        android:textColor="@color/white"
+        android:layout_marginLeft="@dimen/songmenu_item_listenmargin"
+        android:layout_marginBottom="@dimen/songmenu_item_mainimgmargin"
+        android:drawableLeft="@mipmap/ic_listen_count"
+        />
+
+    <ImageView
+        android:id="@+id/img_songmenu_play"
+        android:layout_width="@dimen/listItem_play_width"
+        android:layout_height="@dimen/listItem_play_width"
+        android:layout_marginTop="@dimen/songmenu_item_playmargin"
+        android:layout_marginLeft="@dimen/songmenu_item_playmargin"
+        android:src="@mipmap/bt_widget_play_press"
+        android:padding="@dimen/listItem_play_padding"
+        android:background="@mipmap/btn_online_topic_detail_playall_normal"
+        />
+</RelativeLayout>
