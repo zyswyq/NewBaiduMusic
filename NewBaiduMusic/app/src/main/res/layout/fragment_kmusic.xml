@@ -3,9 +3,59 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="K歌"
-        android:textSize="80sp"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="@dimen/musicfragment_tablayout_height"
+        android:src="@mipmap/kmusic_search"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--轮播图-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/kmusic_bannerheight"
+                android:orientation="horizontal"
+                android:background="#60f"
+                android:layout_marginBottom="@dimen/kmusic_viewheight">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="#f06"
+                android:layout_height="@dimen/kmusic_firstlinearheight"
+                android:layout_marginBottom="@dimen/kmusic_viewheight">
+
+            </LinearLayout>
+
+            <!--类别-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/kmusic_classheight"
+                android:orientation="horizontal"
+                android:background="#6f0">
+
+            </LinearLayout>
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ListView>
+
+            <include layout="@layout/foot_item"/>
+        </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>

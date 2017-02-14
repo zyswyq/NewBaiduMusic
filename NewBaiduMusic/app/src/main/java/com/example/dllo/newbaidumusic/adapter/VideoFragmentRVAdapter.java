@@ -11,12 +11,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.bean.VideoBean;
+import com.example.dllo.newbaidumusic.tool.BaseViewHolder;
 
 /**
  * Created by dllo on 17/2/13.
  */
 
-public class VideoFragmentRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class VideoFragmentRVAdapter extends RecyclerView.Adapter<BaseViewHolder>{
 
     private VideoBean.ResultBean data;
     private Context context;
@@ -30,38 +31,22 @@ public class VideoFragmentRVAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         this.context = context;
     }
 
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder myViewHolder=null;
-        View view= LayoutInflater.from(context).inflate(R.layout.item_video_recyclerview,parent,false);
-        myViewHolder=new MyViewHolder(view);
 
-        return myViewHolder;
+    @Override
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return BaseViewHolder.createRvViewHolder(context,parent,R.layout.item_video_recyclerview);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        MyViewHolder myViewHolder= (MyViewHolder) holder;
-
-        myViewHolder.title.setText(data.getMv_list().get(position).getTitle());
-        myViewHolder.create.setText(data.getMv_list().get(position).getArtist());
-        Glide.with(context).load(data.getMv_list().get(position).getThumbnail()).into(myViewHolder.mainimg);
+    public void onBindViewHolder(BaseViewHolder holder, int position) {
+        holder.setText(R.id.tv_video_title,data.getMv_list().get(position).getTitle());
+        holder.setText(R.id.tv_video_create,data.getMv_list().get(position).getArtist());
+        holder.setImg(R.id.img_video_main,data.getMv_list().get(position).getThumbnail());
     }
 
     @Override
     public int getItemCount() {
         return data!=null?data.getMv_list().size():0;
-    }
-
-    private class MyViewHolder extends RecyclerView.ViewHolder {
-        private ImageView mainimg;
-        private TextView title,create;
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            mainimg = (ImageView) itemView.findViewById(R.id.img_video_main);
-            title = (TextView) itemView.findViewById(R.id.tv_video_title);
-            create = (TextView) itemView.findViewById(R.id.tv_video_create);
-        }
     }
 
 }

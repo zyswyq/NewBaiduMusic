@@ -1,5 +1,6 @@
 package com.example.dllo.newbaidumusic.fragment.musicfragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -33,6 +34,7 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
     private VideoFragmentRVAdapter adapter;
     private VideoBean data;
     private int page=1;
+    private int HOTSELECT=1; //1视为最热被显示//0为最新
 
     @Nullable
     @Override
@@ -85,7 +87,7 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
     //获取最新数据
     private void getNewDate() {
         try {
-            NetTool.getInstance().startRequest(URLBean.VIDEO_HOT1 + page + URLBean.VIDEO_NEW2+new String(selectMenu.getBytes(),"utf-8"), VideoBean.class, new CallBack<VideoBean>() {
+            NetTool.getInstance().startRequest(URLBean.VIDEO_NEW1 + page + URLBean.VIDEO_NEW2+new String(selectMenu.getBytes(),"utf-8"), VideoBean.class, new CallBack<VideoBean>() {
                 @Override
                 public void onSuccess(VideoBean responce) {
                     data=responce;
@@ -111,8 +113,24 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
 
                 break;
             case R.id.tv_songmenu_hot:
+                if(HOTSELECT==1){
+
+                }else {
+                    hotTv.setTextColor(Color.parseColor("#09b9ef"));
+                    newTv.setTextColor(Color.parseColor("#aba8a8"));
+                    HOTSELECT=1;
+                    getHotDate();
+                }
                 break;
             case R.id.tv_songmenu_new:
+                if(HOTSELECT==0){
+
+                }else {
+                    newTv.setTextColor(Color.parseColor("#09b9ef"));
+                    hotTv.setTextColor(Color.parseColor("#aba8a8"));
+                    HOTSELECT=0;
+                    getNewDate();
+                }
                 break;
         }
 

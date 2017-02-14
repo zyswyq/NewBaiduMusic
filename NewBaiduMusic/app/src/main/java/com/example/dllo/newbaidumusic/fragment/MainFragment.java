@@ -56,10 +56,13 @@ public class MainFragment extends AbsFragment implements View.OnClickListener {
         initDatas();
         myVp.setAdapter(adapter);
         myTab.setupWithViewPager(myVp);
+        myVp.setOffscreenPageLimit(4);
         myTab.getTabAt(0).setText("我的");
         myTab.getTabAt(1).setText("音乐");
         myTab.getTabAt(2).setText("动态");
         myTab.getTabAt(3).setText("发现");
+
+
     }
     private void initView() {
         myTab=bindView(R.id.tablayout_mainfragment);

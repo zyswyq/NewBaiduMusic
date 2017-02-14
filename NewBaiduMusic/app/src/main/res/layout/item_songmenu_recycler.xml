@@ -21,6 +21,8 @@
         android:layout_below="@id/img_songmenu_main"
         android:text="dsdasdsa"
         android:textColor="@color/black"
+        android:maxLines="2"
+
         android:layout_marginTop="@dimen/songmenu_item_mainimgmargin"
 
         />

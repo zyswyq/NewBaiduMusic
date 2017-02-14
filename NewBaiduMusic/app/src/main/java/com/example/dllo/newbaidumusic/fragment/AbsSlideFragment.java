@@ -46,8 +46,6 @@ public abstract class AbsSlideFragment extends Fragment implements View.OnTouchL
     protected <T extends View> T bindView(int resId) {
         return (T) getView().findViewById(resId);
     }
-
-
 //    @Override
 //    public boolean onTouch(View arg0, MotionEvent event) {
 //        switch (event.getAction() & MotionEvent.ACTION_MASK) {
@@ -85,13 +83,7 @@ public abstract class AbsSlideFragment extends Fragment implements View.OnTouchL
 //        }
 //        return true;
 //    }
-
     private float downX  ;
-
-
-
-
-
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
@@ -99,14 +91,10 @@ public abstract class AbsSlideFragment extends Fragment implements View.OnTouchL
                 downX = motionEvent.getX();
                 break;
             case MotionEvent.ACTION_UP:
-                if (Math.abs(motionEvent.getX()-downX)<6)
-                {
-                    Log.d("ssssssssssss", "onTouch:  false ");
+                if (Math.abs(motionEvent.getX()-downX)<6) {
                     return false;
                 }
                 else {
-
-                    Log.d("sssss", "onTouch: true");
                     if ((motionEvent.getX() - downX) > 300) {
                         Animation animation = AnimationUtils.loadAnimation(
                                 getActivity(), R.anim.page_slide_right_exit);
@@ -135,16 +123,12 @@ public abstract class AbsSlideFragment extends Fragment implements View.OnTouchL
                 break;
             case MotionEvent.ACTION_MOVE:
                 distance = (int) (motionEvent.getX() - downX);
-
-                if (distance <0)
-                {
+                if (distance <0) {
                     return false;
                 }
                 else {
                     view.setPadding(distance, 0, 0, 0);
-
                 }
-
         }
         return false;
     }

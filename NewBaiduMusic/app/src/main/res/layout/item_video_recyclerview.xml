@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:text="dsdasdsa"
         android:textColor="@color/black"
+        android:maxLines="2"
         android:layout_marginTop="@dimen/songmenu_item_mainimgmargin"
         />
 
@@ -25,6 +26,8 @@
         android:id="@+id/tv_video_create"
         android:layout_width="wrap_content"
         android:textSize="@dimen/songmenu_item_titlesize"
+        android:maxLines="2"
+
         android:layout_height="wrap_content"
         android:textColor="@color/graytext"
         android:text="dsadas"

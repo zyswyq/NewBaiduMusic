@@ -53,6 +53,7 @@ public class MusicFragment extends AbsFragment {
         initData();
         adapter.setContext(context);
         adapter.setFragments(fragments);
+        myVp.setOffscreenPageLimit(5);
         myVp.setAdapter(adapter);
         myTab.setupWithViewPager(myVp);
         myTab.getTabAt(0).setText("推荐");
@@ -60,6 +61,7 @@ public class MusicFragment extends AbsFragment {
         myTab.getTabAt(2).setText("榜单");
         myTab.getTabAt(3).setText("视频");
         myTab.getTabAt(4).setText("K歌");
+
     }
 
     private void initView() {

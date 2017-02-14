@@ -11,17 +11,23 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.bean.SongMenuBean;
+import com.example.dllo.newbaidumusic.tool.BaseViewHolder;
 
 /**
  * Created by dllo on 17/2/11.
  */
 
-public class SongMenuFragmentRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class SongMenuFragmentRVAdapter extends RecyclerView.Adapter<BaseViewHolder>{
 
     private Context context;
     private SongMenuBean data;
 
     public SongMenuFragmentRVAdapter() {
+    }
+
+    @Override
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return BaseViewHolder.createRvViewHolder(context,parent,R.layout.item_songmenu_recycler);
     }
 
     public Context getContext() {
@@ -42,38 +48,15 @@ public class SongMenuFragmentRVAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.item_songmenu_recycler,parent,false);
-        MyViewHolder myViewHolder=new MyViewHolder(view);
-
-
-        return myViewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        MyViewHolder myViewHolder= (MyViewHolder) holder;
-        myViewHolder.title.setText(data.getDiyInfo().get(position).getTitle());
-        myViewHolder.creater.setText("by "+data.getDiyInfo().get(position).getUsername());
-        myViewHolder.listener.setText(data.getDiyInfo().get(position).getListen_num()+"");
-        Glide.with(context).load(data.getDiyInfo().get(position).getList_pic()).into(myViewHolder.mainimg);
-
+    public void onBindViewHolder(BaseViewHolder holder, int position) {
+        holder.setText(R.id.tv_songmenu_title,data.getDiyInfo().get(position).getTitle());
+        holder.setText(R.id.tv_songmenu_create,data.getDiyInfo().get(position).getUsername());
+        holder.setText(R.id.tv_songmenu_listen,data.getDiyInfo().get(position).getListen_num()+"");
+        holder.setImg(R.id.img_songmenu_main,data.getDiyInfo().get(position).getList_pic());
     }
 
     @Override
     public int getItemCount() {
         return data!=null?data.getDiyInfo().size():0;
-    }
-
-    class MyViewHolder  extends RecyclerView.ViewHolder {
-        private ImageView mainimg;
-        private TextView title,listener,creater;
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            title = (TextView) itemView.findViewById(R.id.tv_songmenu_title);
-            listener = (TextView) itemView.findViewById(R.id.tv_songmenu_listen);
-            creater = (TextView) itemView.findViewById(R.id.tv_songmenu_create);
-            mainimg = (ImageView) itemView.findViewById(R.id.img_songmenu_main);
-        }
     }
 }

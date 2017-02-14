@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/find_live_itemwidth"
+    android:layout_height="@dimen/find_live_itemheight"
+    android:layout_marginRight="@dimen/find_live_itemimgmarginrihght"
+    >
+
+    <ImageView
+        android:id="@+id/img_findmain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/find_live_itemimgheight"
+        android:scaleType="centerCrop"
+        />
+    <TextView
+        android:id="@+id/tv_findhome"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/find_live_itemtvheight"
+        android:layout_below="@id/img_findmain"
+        android:textColor="@color/black"
+        />
+    <ImageButton
+        android:layout_width="@dimen/find_live_itemplayheight"
+        android:layout_height="@dimen/find_live_itemplayheight"
+        android:layout_marginLeft="@dimen/find_live_itemplaymarginleft"
+        android:layout_marginTop="@dimen/find_live_itemplaymargintop"
+        android:src="@drawable/findplay"
+        android:scaleType="fitXY"
+        android:background="@null"
+        />
+</RelativeLayout>
