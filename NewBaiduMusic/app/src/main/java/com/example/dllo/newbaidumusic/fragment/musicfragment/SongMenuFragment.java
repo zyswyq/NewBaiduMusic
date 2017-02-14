@@ -2,11 +2,13 @@ package com.example.dllo.newbaidumusic.fragment.musicfragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.dllo.newbaidumusic.R;
@@ -26,7 +28,7 @@ public class SongMenuFragment extends AbsFragment {
     private RecyclerView recyclerView;
     private SongMenuFragmentRVAdapter adapter;
     private SongMenuBean data;
-    
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,15 +41,22 @@ public class SongMenuFragment extends AbsFragment {
         
         recyclerView=bindView(R.id.recycler_songmenu);
         adapter=new SongMenuFragmentRVAdapter();
+        adapter.setContext(context);
+        adapter.setData(data);
+        recyclerView.setLayoutManager(new GridLayoutManager(context,2));
+        recyclerView.setAdapter(adapter);
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         NetTool.getInstance().startRequest(URLBean.SONGMENU_HOTDATA, SongMenuBean.class, new CallBack<SongMenuBean>() {
             @Override
             public void onSuccess(SongMenuBean responce) {
                 data=responce;
                 adapter.setContext(context);
                 adapter.setData(data);
-                recyclerView.setLayoutManager(new GridLayoutManager(context,2));
-                recyclerView.setAdapter(adapter);
+
             }
 
             @Override

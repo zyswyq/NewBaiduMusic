@@ -41,7 +41,7 @@
     <dimen name="user_sign_tv1_marginbelow">15dp</dimen>
     <dimen name="user_textsize">15sp</dimen>
     <dimen name="user_changetextsize">12sp</dimen>
-    <dimen name="user_playbtn_width">20dp</dimen>
+    <dimen name="user_playbtn_width">23dp</dimen>
 
 
     <dimen name="margin10">10dp</dimen>
@@ -53,7 +53,7 @@
 
     <dimen name="songmenu_item_mainheight">250dp</dimen>
     <dimen name="songmenu_item_mainimgwidth">180dp</dimen>
-    <dimen name="songmenu_item_mainimgmargin">10dp</dimen>
+    <dimen name="songmenu_item_mainimgmargin">5dp</dimen>
     <dimen name="songmenu_item_titlesize">12sp</dimen>
     <dimen name="songmenu_item_playmargin">140dp</dimen>
     <dimen name="songmenu_item_playwidth">20dp</dimen>
@@ -65,6 +65,10 @@
     <dimen name="songmenu_main_imgmarginleft">10dp</dimen>
     <dimen name="songmenu_main_imgmargintop">20dp</dimen>
     <dimen name="songmenu_main_tvmargin">10dp</dimen>
+
+
+    <dimen name="video_item_imgheight">90dp</dimen>
+    <dimen name="video_item_mainheight">150dp</dimen>
 
 
 

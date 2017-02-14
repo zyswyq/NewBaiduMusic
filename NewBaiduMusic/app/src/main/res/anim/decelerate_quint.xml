@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 调整动画的速度  值越大 速度越快 -->
+<decelerateInterpolator 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:factor="2.5"/>
+	  

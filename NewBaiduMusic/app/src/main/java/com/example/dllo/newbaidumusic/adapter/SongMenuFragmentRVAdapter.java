@@ -38,6 +38,7 @@ public class SongMenuFragmentRVAdapter extends RecyclerView.Adapter<RecyclerView
 
     public void setData(SongMenuBean data) {
         this.data = data;
+        notifyDataSetChanged();
     }
 
     @Override

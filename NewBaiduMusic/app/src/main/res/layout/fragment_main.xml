@@ -19,6 +19,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
         <ImageButton
+            android:id="@+id/imgbtn_main_more"
             android:background="@null"
             android:layout_width="@dimen/mainfragment_tablayout_height"
             android:layout_height="match_parent"
@@ -36,6 +37,7 @@
             />
 
         <ImageButton
+            android:id="@+id/imgbtn_main_search"
             android:background="@null"
 
             android:layout_width="@dimen/mainfragment_tablayout_height"

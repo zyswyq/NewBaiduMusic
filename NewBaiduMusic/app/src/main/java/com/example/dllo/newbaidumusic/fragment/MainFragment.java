@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.adapter.MainFragmentVPAdapter;
@@ -23,10 +26,12 @@ import java.util.List;
  * Created by dllo on 17/2/10.
  */
 
-public class MainFragment extends AbsFragment{
+public class MainFragment extends AbsFragment implements View.OnClickListener {
 
     private TabLayout myTab;
     private ViewPager myVp;
+
+    private ImageButton more,search;
 
     private MainFragmentVPAdapter adapter;
 
@@ -35,6 +40,8 @@ public class MainFragment extends AbsFragment{
     private FindFragment findFragment;
     private MusicFragment musicFragment;
     private UserFragment userFragment;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
 
     @Nullable
     @Override
@@ -59,6 +66,16 @@ public class MainFragment extends AbsFragment{
         myVp=bindView(R.id.vp_mainfragment);
         fragments=new ArrayList<>();
         adapter=new MainFragmentVPAdapter(getActivity().getSupportFragmentManager());
+        more=bindView(R.id.imgbtn_main_more);
+        search=bindView(R.id.imgbtn_main_search);
+
+
+        manager = getFragmentManager();
+        transaction = manager.beginTransaction();
+
+
+        more.setOnClickListener(this);
+        search.setOnClickListener(this);
     }
     private void initDatas() {
         dyFragment = new DynamicFragment();
@@ -74,4 +91,14 @@ public class MainFragment extends AbsFragment{
         adapter.setFragments(fragments);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.imgbtn_main_more:
+
+                break;
+            case R.id.imgbtn_main_search:
+                break;
+        }
+    }
 }
