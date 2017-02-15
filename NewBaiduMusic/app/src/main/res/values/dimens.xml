@@ -91,7 +91,13 @@
     <dimen name="kmusic_viewheight">5dp</dimen>
     <dimen name="kmusic_firstlinearheight">55dp</dimen>
     <dimen name="kmusic_classheight">250dp</dimen>
+    <dimen name="kmusic_classitemheight">125dp</dimen>
+    <dimen name="kmusic_circleheight">100dp</dimen>
+    <dimen name="kmusic_rvitemtvheight">25dp</dimen>
+    <dimen name="kmusic_rvmarginleft">25dp</dimen>
+    <dimen name="kmusic_rvmargintop">25dp</dimen>
     <dimen name="kmusic_item_height">60dp</dimen>
+    <dimen name="kmusic_every_height">65dp</dimen>
 
 
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/kmusic_classitemheight">
+
+    <com.zuowei.circleimageview.CircleImageView
+        android:id="@+id/cirimg_kmusicrvitem"
+        android:layout_width="@dimen/kmusic_circleheight"
+        android:layout_height="@dimen/kmusic_circleheight" />
+    <TextView
+        android:id="@+id/tv_kmusicrvitem"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/kmusic_rvitemtvheight" />
+
+</LinearLayout>

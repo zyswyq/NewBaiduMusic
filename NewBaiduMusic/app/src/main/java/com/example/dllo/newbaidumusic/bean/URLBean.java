@@ -73,5 +73,9 @@ public class URLBean {
 
     public static String FIND_DATA="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.plaza.indexFind&param=WV%2FB0OohBbFuGg0xKpldarz7CAZJJXK4auqEmfBO1bA7r5yF%2F1ts1cMw%2FqXkgAkH7eNZQOWL5ksdBTJ6dz5gNxIRZboV1KztZxa0%2F3Zsdi4%3D&timestamp=1486632421&sign=2ed28fc410e34aba61e0a7f5369bc02f";
 
+    public static String KMUSIC_LISTDATA="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.learn.now&page_size=50";
+    //中间加数字第几页,后面接类别的utf-8
+    public static String KMUSIC_DITALDATA1="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.learn.detail&page_no=";
+    public static String KMUSIC_DITALDATA2="&page_size=50&query=all&value=0&desc=";
 
 }

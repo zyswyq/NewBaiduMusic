@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -27,6 +28,7 @@ import com.example.dllo.newbaidumusic.tool.NetTool;
 
 public class FindFragment extends AbsFragment {
 
+    private ScrollView scrollView;
     private RecyclerView recyclerView;
     private FindBean data;
     private ImageView shop1,shop2,shop3;
@@ -42,7 +44,14 @@ public class FindFragment extends AbsFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView=bindView(R.id.recycler_find);
+        scrollView=bindView(R.id.scroll_find);
+
         shop1=bindView(R.id.img_find_shop1);
+
+        //为防止ScrollView在开始就滚动到底,给上方控件设置焦点
+        shop1.setFocusable(true);
+        shop1.setFocusableInTouchMode(true);
+        shop1.requestFocus();
         shop2=bindView(R.id.img_find_shop2);
         shop3=bindView(R.id.img_find_shop3);
 
