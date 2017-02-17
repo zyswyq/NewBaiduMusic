@@ -40,7 +40,7 @@
             android:layout_height="10dp"
             android:max="50"
             android:progress="20"
-            
+
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
     </LinearLayout>
 

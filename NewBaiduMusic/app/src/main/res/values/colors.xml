@@ -11,6 +11,9 @@
     <color name="graytext">#aba8a8</color>
     <color name="king">#e6bf5d</color>
     <color name="littlegray">#dfdddd</color>
+    <color name="recommandtext1">#f60</color>
+    <color name="recommandtext2">#6f0</color>
+    <color name="recommandtext3">#12e3fa</color>
 
 
 </resources>

@@ -116,6 +116,7 @@
     <dimen name="recommand_high_lignheight">80dp</dimen>
     <dimen name="recommand_class_imgheight">15dp</dimen>
 
+    <dimen name="recommand_lebo_imgheight">50dp</dimen>
 
 
 
