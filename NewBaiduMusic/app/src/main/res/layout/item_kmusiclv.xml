@@ -8,21 +8,28 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
         <TextView
             android:id="@+id/tv_kmusiclvtitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/listItem_title_textsize"/>
         <TextView
             android:id="@+id/tv_kmusiclvcount"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/graytext"
+            android:textSize="@dimen/fing_main_smalltextsize"/>
     </LinearLayout>
 
     <ImageView
-        android:src="@mipmap/bt_playpage_button_ktv_normal"
+        android:src="@mipmap/ic_mike_normal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/margin10"
+        />
 
 
 

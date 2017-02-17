@@ -1,28 +1,392 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    >
+    android:orientation="vertical">
     <!---->
-
-
-    <!--轮播图-->
-    <LinearLayout
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_recommend"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        >
-        <android.support.v4.view.ViewPager
+        android:layout_height="match_parent">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:clipChildren="false"
             android:layout_height="match_parent">
 
-        </android.support.v4.view.ViewPager>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--轮播图-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_vpheight">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"/>
-    
+                    <android.support.v4.view.ViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipChildren="false">
+
+                    </android.support.v4.view.ViewPager>
+                </LinearLayout>
+
+                <!--轮播图下方布局-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_high_lignheight"
+                    android:layout_marginLeft="@dimen/margin15"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/margin20"
+                    android:paddingLeft="@dimen/margin20"
+                    android:paddingRight="@dimen/margin20"
+                    android:paddingTop="@dimen/margin5">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/recommend_singer"
+                        android:scaleType="fitCenter"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/recommend_songclass"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/recommend_video"
+                        android:scaleType="fitCenter"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/recommend_vip"
+                        android:scaleType="fitCenter"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/margin15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/margin20"
+                    android:paddingLeft="@dimen/margin20"
+                    android:paddingRight="@dimen/margin20"
+                    android:paddingTop="@dimen/margin5"
+                    >
+
+
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="歌手"
+                        android:gravity="center"
+                        android:textColor="@color/mainFragmentTablayout"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="歌曲分类"
+                        android:gravity="center"
+                        android:textColor="@color/mainFragmentTablayout"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="电台"
+                        android:gravity="center"
+                        android:textColor="@color/mainFragmentTablayout"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="会员专区"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:textColor="@color/mainFragmentTablayout"/>
+                </LinearLayout>
+
+                <!--栏目中介-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_lineheight"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:src="@mipmap/ic_recommend_song"
+                        style="@style/recommand_img" />
+
+                    <TextView
+                        android:text="@string/recommend_tv1"
+                        style="@style/recommend_tv" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更多 >" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_recommand1"
+                    style="@style/recommend_rv" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_lineheight"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:src="@mipmap/recommend_newpage"
+                        style="@style/recommand_img" />
+
+                    <TextView
+                        style="@style/recommend_tv"
+                        android:text="@string/recommend_tv2" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更多 >" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_recommand2"
+                    style="@style/recommend_rv" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_lineheight"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:src="@mipmap/recommed_hotsale"
+                        style="@style/recommand_img" />
+
+                    <TextView
+                        style="@style/recommend_tv"
+                        android:text="@string/recommend_tv3" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更多 >" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_recommand3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_rv2_height"
+                    android:layout_marginLeft="@dimen/margin15"/>
+
+                <!--在这里是场景电台,以及今日推荐歌曲-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_lineheight"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:src="@mipmap/ic_recommend_scene"
+                        style="@style/recommand_img" />
+                    <TextView
+                        style="@style/recommend_tv"
+                        android:text="@string/recommend_tv4" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更多 >" />
+                </LinearLayout>
+                        safesferf
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_lineheight"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:src="@mipmap/recommend_song"
+                        style="@style/recommand_img" />
+
+                    <TextView
+                        style="@style/recommend_tv"
+
+                        android:text="@string/recommend_tv5" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更多 >" />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_lineheight"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:src="@mipmap/recommend_create"
+                        style="@style/recommand_img" />
+
+                    <TextView
+                        style="@style/recommend_tv"
+
+                        android:text="@string/recommend_tv6" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更多 >" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_recommand4"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_rv2_height"
+                    android:layout_marginLeft="@dimen/margin15"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_lineheight"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:src="@mipmap/recommend_mv"
+                        style="@style/recommand_img" />
+
+                    <TextView
+                        style="@style/recommend_tv"
+
+                        android:text="@string/recommend_tv7" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更多 >" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_recommand5"
+                    style="@style/recommend_rv" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_lineheight"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:src="@mipmap/ic_recommend_lebo"
+                        style="@style/recommand_img" />
+
+                    <TextView
+                        style="@style/recommend_tv"
+
+                        android:text="@string/recommend_tv8" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更多 >" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_recommand6"
+                    style="@style/recommend_rv" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_lineheight"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:src="@mipmap/ic_recommend_columnist"
+                        style="@style/recommand_img" />
+
+                    <TextView
+                        style="@style/recommend_tv"
+                        android:text="@string/recommend_tv9" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更多 >" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listview_recommand"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recommand_lv_height"
+                    android:layout_marginLeft="@dimen/margin15"
+                     />
+
+                <include layout="@layout/foot_item" />
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </LinearLayout>

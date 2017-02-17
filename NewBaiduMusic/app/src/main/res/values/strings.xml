@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">百度音乐</string>
 
+    <string name="main_below_tv">百度音乐 听到极致</string>
+
     <string name="user_try_tv">随便听听</string>
     <string name="user_sd_tv">本地音乐</string>
     <string name="user_recent_tv">最近播放</string>
@@ -36,7 +38,15 @@
     <string name="kmusic_every">大家都在唱</string>
     <string name="kmusic_my">我的K歌</string>
 
-
+    <string name="recommend_tv1">歌单推荐</string>
+    <string name="recommend_tv2">新碟上架</string>
+    <string name="recommend_tv3">热销专辑</string>
+    <string name="recommend_tv4">场景电台</string>
+    <string name="recommend_tv5">今日推荐歌曲</string>
+    <string name="recommend_tv6">原创歌曲</string>
+    <string name="recommend_tv7">最热MV推荐</string>
+    <string name="recommend_tv8">乐播节目</string>
+    <string name="recommend_tv9">专栏</string>
 
 
 

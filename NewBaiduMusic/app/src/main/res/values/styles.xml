@@ -90,4 +90,25 @@
         <item name="android:layout_marginRight">@dimen/find_live_horpicmarginright</item>
     </style>
 
+    <style name="recommend_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/user_textsize</item>
+    </style>
+
+    <style name="recommand_img">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/margin15</item>
+        <item name="android:layout_width">@dimen/recommand_class_imgheight</item>
+        <item name="android:layout_height">@dimen/recommand_class_imgheight</item>
+    </style>
+
+    <style name="recommend_rv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/recommand_rv1_height</item>
+        <item name="android:layout_marginLeft">@dimen/margin15</item>
+    </style>
+
 </resources>

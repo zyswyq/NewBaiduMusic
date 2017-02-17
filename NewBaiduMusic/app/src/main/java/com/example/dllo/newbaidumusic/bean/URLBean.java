@@ -77,5 +77,14 @@ public class URLBean {
     //中间加数字第几页,后面接类别的utf-8
     public static String KMUSIC_DITALDATA1="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.learn.detail&page_no=";
     public static String KMUSIC_DITALDATA2="&page_size=50&query=all&value=0&desc=";
+    public static String KMUSIC_BANNER="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.active.showList";
+
+    public static String RECOMMEND_DATA="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=xiaomi&operator=0&method=baidu.ting.plaza.index&cuid=F5143A6FD911991081385C23B22A9C99&focu_num=8";
+    //推荐页小图标
+    public static String RECOMMEND_1="http://business.cdn.qianqian.com/qianqian/pic/bos_client_1465370722dfa35e762ce6c854d656eac195f7fcd5.jpg";
+    public static String RECOMMEND_2= "http://business.cdn.qianqian.com/qianqian/pic/bos_client_146640780395497fb5d1cc59a4cb81580819fbc07b.jpg";
+    public static String RECOMMEND_3="http://business.cdn.qianqian.com/qianqian/pic/bos_client_14653709721f134fb220693dff72cce9f8bae7d1ce.jpg";
+    public static String RECOMMEND_4="http://business.cdn.qianqian.com/qianqian/pic/bos_client_1465370987dc19b57e5ee3cb4c5c705aeca66d6dab.jpg";
+
 
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/recommand_rv1_itemheight"
+    android:layout_margin="@dimen/recommand_rv_imgmargin">
+
+    <ImageView
+        android:layout_width="@dimen/recommand_rv_imgheight"
+        android:layout_height="@dimen/recommand_rv_imgheight"
+        android:id="@+id/img_command_rvimg" />
+
+
+    <TextView
+        android:id="@+id/tv_command_rvtitle"
+        android:layout_width="@dimen/recommand_rv_imgheight"
+        android:textColor="@color/black"
+        android:textSize="@dimen/fing_main_smalltextsize"
+        android:maxLines="2"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/tv_command_rvcreater"
+        android:layout_width="@dimen/recommand_rv_imgheight"
+        android:textColor="@color/graytext"
+        android:textSize="@dimen/fing_main_smalltextsize"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

@@ -48,6 +48,7 @@
     <dimen name="margin20">20dp</dimen>
     <dimen name="margin15">15dp</dimen>
     <dimen name="margin5">5dp</dimen>
+    <dimen name="margin40">40dp</dimen>
 
 
 
@@ -92,14 +93,28 @@
     <dimen name="kmusic_firstlinearheight">55dp</dimen>
     <dimen name="kmusic_classheight">250dp</dimen>
     <dimen name="kmusic_classitemheight">125dp</dimen>
-    <dimen name="kmusic_circleheight">100dp</dimen>
+    <dimen name="kmusic_circleheight">70dp</dimen>
     <dimen name="kmusic_rvitemtvheight">25dp</dimen>
     <dimen name="kmusic_rvmarginleft">25dp</dimen>
     <dimen name="kmusic_rvmargintop">25dp</dimen>
     <dimen name="kmusic_item_height">60dp</dimen>
     <dimen name="kmusic_every_height">65dp</dimen>
 
+    <dimen name="recommand_lv_itemheight">55dp</dimen>
+    <dimen name="recommand_lv_height">495dp</dimen>
+    <dimen name="recommand_lv_imgheight">45dp</dimen>
+    <dimen name="recommand_lv_imgmargin">5dp</dimen>
+    <dimen name="recommand_rv_imgheight">100dp</dimen>
+    <dimen name="recommand_rv_imgmargin">10dp</dimen>
+    <dimen name="recommand_rv1_itemheight">150dp</dimen>
+    <dimen name="recommand_rv1_height">340dp</dimen>
+    <dimen name="recommand_rv2_height">170dp</dimen>
 
+    <dimen name="recommand_lineheight">50dp</dimen>
+    <dimen name="recommand_vpheight">150dp</dimen>
+    <dimen name="recommand_scrollheight">1000dp</dimen>
+    <dimen name="recommand_high_lignheight">80dp</dimen>
+    <dimen name="recommand_class_imgheight">15dp</dimen>
 
 
 
