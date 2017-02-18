@@ -68,7 +68,7 @@ public class MusicFragment extends AbsFragment {
         myTab=bindView(R.id.tablayout_musicfragment);
         myVp=bindView(R.id.vp_musicfragment);
         fragments=new ArrayList<>();
-        adapter=new MusicFragmentVPAdapter(getActivity().getSupportFragmentManager());
+        adapter=new MusicFragmentVPAdapter(getChildFragmentManager());
     }
     private void initData() {
         kFragment = new KMusicFragment();

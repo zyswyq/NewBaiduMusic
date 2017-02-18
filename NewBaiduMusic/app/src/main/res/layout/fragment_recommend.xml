@@ -243,7 +243,6 @@
                         <ImageView
                             android:id="@+id/img_recommandlebo1"
                             android:layout_width="match_parent"
-                            android:src="@mipmap/bofang"
                             android:layout_height="@dimen/recommand_lebo_imgheight"
                             android:layout_margin="@dimen/margin5"
                             />
@@ -269,7 +268,6 @@
                         <ImageView
                             android:id="@+id/img_recommandlebo2"
                             android:layout_width="match_parent"
-                            android:src="@mipmap/bofang"
                             android:layout_height="@dimen/recommand_lebo_imgheight"
                             android:layout_margin="@dimen/margin5"
                             />
@@ -294,7 +292,6 @@
                         <ImageView
                             android:id="@+id/img_recommandlebo3"
                             android:layout_width="match_parent"
-                            android:src="@mipmap/bofang"
                             android:layout_height="@dimen/recommand_lebo_imgheight"
                             android:layout_margin="@dimen/margin5"
                             />
@@ -319,7 +316,6 @@
                         <ImageView
                             android:id="@+id/img_recommandlebo4"
                             android:layout_width="match_parent"
-                            android:src="@mipmap/bofang"
                             android:layout_height="@dimen/recommand_lebo_imgheight"
                             android:layout_margin="@dimen/margin5"
                             />

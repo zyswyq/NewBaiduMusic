@@ -87,4 +87,8 @@ public class URLBean {
     public static String RECOMMEND_4="http://business.cdn.qianqian.com/qianqian/pic/bos_client_1465370987dc19b57e5ee3cb4c5c705aeca66d6dab.jpg";
 
 
+    //songid不影响网页
+    String song="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=-1&method=baidu.ting.song.getInfos&format=json&songid=74134682&ts=1487378720943&e=PrHicSTLk8QDXMnH9u6FjhymNFyjImkk" +
+            "&nw=2&ucf=1&res=1&l2p=464&lpb=&usup=1&lebo=0";
+
 }

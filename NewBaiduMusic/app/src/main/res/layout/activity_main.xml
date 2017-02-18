@@ -28,8 +28,12 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <TextView
-                android:layout_width="wrap_content"
+            <com.example.dllo.newbaidumusic.view.RunTextView
+                android:layout_width="100dp"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:text="哈哈哈哈哈哈hi对欧瑞偶尔UR我oeuworiuweioruioweuroi"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:layout_height="wrap_content" />
 
 
@@ -37,10 +41,10 @@
 
         <ProgressBar
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="3dp"
             android:max="50"
             android:progress="20"
-
+            android:progressDrawable="@drawable/progressbar_color"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
     </LinearLayout>
 
