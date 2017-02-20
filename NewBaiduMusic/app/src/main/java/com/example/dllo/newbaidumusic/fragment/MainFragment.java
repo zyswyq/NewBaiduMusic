@@ -101,6 +101,9 @@ public class MainFragment extends AbsFragment implements View.OnClickListener {
 
                 break;
             case R.id.imgbtn_main_search:
+                FragmentTransaction transaction=manager.beginTransaction();
+                transaction.add(R.id.framlayout_mainfragment,new SearchFragment());
+                transaction.commit();
                 break;
         }
     }

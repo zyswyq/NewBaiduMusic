@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">百度音乐</string>
 
-    <string name="main_below_tv">百度音乐 听到极致</string>
+    <string name="main_below_tv">百度音乐,听到极致</string>
 
     <string name="user_try_tv">随便听听</string>
     <string name="user_sd_tv">本地音乐</string>

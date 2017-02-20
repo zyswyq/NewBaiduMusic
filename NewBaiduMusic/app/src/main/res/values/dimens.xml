@@ -119,5 +119,11 @@
     <dimen name="recommand_lebo_imgheight">50dp</dimen>
 
 
+    <dimen name="mainabtitile_textsize">13sp</dimen>
+    <dimen name="mainabsinger_textsize">10sp</dimen>
+    <dimen name="maintab_tvlength">150dp</dimen>
+
+
+
 
 </resources>

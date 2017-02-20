@@ -56,6 +56,14 @@ public class URLBean {
      *  发现--直播二级界面 (最后的数字变化)
      *  http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.show.item&page_size=30&page_no=1&category=4
      *
+     *
+     * 查询的都是utf_8
+     *  查询中
+     *  http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.search.catalogSug&format=json&query=
+     *  按查询腱子
+     *  http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.search.merge&format=json&query=a&page_no=1&page_size=30&type=-1&data_source=0&isNew=1&use_cluster=1
+     *
+     *
      */
 
     public static String LIST_DATA="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.billboard.billCategory&format=json&kflag=2";
@@ -90,5 +98,8 @@ public class URLBean {
     //songid不影响网页
     String song="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=-1&method=baidu.ting.song.getInfos&format=json&songid=74134682&ts=1487378720943&e=PrHicSTLk8QDXMnH9u6FjhymNFyjImkk" +
             "&nw=2&ucf=1&res=1&l2p=464&lpb=&usup=1&lebo=0";
+
+
+    public static String SEARCHING="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.search.catalogSug&format=json&query=";
 
 }

@@ -13,8 +13,13 @@
             android:orientation="horizontal"
             android:layout_height="match_parent">
             <ImageView
+                android:id="@+id/img_searchback"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:src="@mipmap/fanhui"
+                android:layout_marginTop="@dimen/margin10"
+                android:layout_marginBottom="@dimen/margin10"/>
+
             <EditText
                 android:id="@+id/edit_search"
                 android:layout_width="0dp"
@@ -25,11 +30,24 @@
                 android:hint="@string/search_edithint"
                 />
             <ImageView
+                android:id="@+id/img_search"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:src="@mipmap/sousuo"
+                android:layout_marginBottom="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin5"/>
         </LinearLayout>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ListView
+            android:id="@+id/listview_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
 
 
 

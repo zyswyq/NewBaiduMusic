@@ -33,6 +33,7 @@
                     android:textSize="@dimen/fing_main_textsize" />
 
                 <TextView
+                    android:id="@+id/tv_findshopmore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/find_more"

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.fragment.MainFragment;
 
+import me.yokeyword.swipebackfragment.SwipeBackActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private FragmentManager manager;

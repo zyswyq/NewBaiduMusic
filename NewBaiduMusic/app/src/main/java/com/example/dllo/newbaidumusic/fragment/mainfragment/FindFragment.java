@@ -2,6 +2,9 @@ package com.example.dllo.newbaidumusic.fragment.mainfragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +20,7 @@ import com.example.dllo.newbaidumusic.adapter.FindFragmentRVAdapter;
 import com.example.dllo.newbaidumusic.bean.FindBean;
 import com.example.dllo.newbaidumusic.bean.URLBean;
 import com.example.dllo.newbaidumusic.fragment.AbsFragment;
+import com.example.dllo.newbaidumusic.fragment.WebFragment;
 import com.example.dllo.newbaidumusic.minterface.CallBack;
 import com.example.dllo.newbaidumusic.tool.NetTool;
 
@@ -26,7 +30,7 @@ import com.example.dllo.newbaidumusic.tool.NetTool;
  * 发现
  */
 
-public class FindFragment extends AbsFragment {
+public class FindFragment extends AbsFragment implements View.OnClickListener {
 
     private ScrollView scrollView;
     private RecyclerView recyclerView;
@@ -34,6 +38,10 @@ public class FindFragment extends AbsFragment {
     private ImageView shop1,shop2,shop3;
     private TextView shotv1,shotv2,shotv3;
     private FindFragmentRVAdapter adapter;
+    private TextView shopmore;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,7 +53,10 @@ public class FindFragment extends AbsFragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView=bindView(R.id.recycler_find);
         scrollView=bindView(R.id.scroll_find);
-
+        shopmore=bindView(R.id.tv_findshopmore);
+        shopmore.setOnClickListener(this);
+        manager=getActivity().getSupportFragmentManager();
+        transaction=manager.beginTransaction();
         shop1=bindView(R.id.img_find_shop1);
 
         //为防止ScrollView在开始就滚动到底,给上方控件设置焦点
@@ -87,5 +98,18 @@ public class FindFragment extends AbsFragment {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tv_findshopmore:
+                String url="http://music.baidu.com/mall?from=pcweb_music_qrcode";
+                Fragment fragment=WebFragment.newInstance(url);
+                transaction.add(R.id.framlayout_mainfragment,fragment);
+                transaction.commit();
+
+                break;
+        }
     }
 }

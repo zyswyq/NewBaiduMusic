@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="@dimen/margin40">
+
+
+    <ImageView
+        android:id="@+id/img_item_search"
+        android:layout_width="@dimen/margin40"
+        android:layout_height="@dimen/margin40"
+        android:layout_margin="@dimen/margin10"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:id="@+id/tv_item_search"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"/>
+
+</LinearLayout>
