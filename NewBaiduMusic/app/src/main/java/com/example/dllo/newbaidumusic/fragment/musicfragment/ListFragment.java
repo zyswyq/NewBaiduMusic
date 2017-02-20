@@ -2,9 +2,13 @@ package com.example.dllo.newbaidumusic.fragment.musicfragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -13,6 +17,8 @@ import com.example.dllo.newbaidumusic.adapter.ListFragmentLVAdapter;
 import com.example.dllo.newbaidumusic.bean.ListBean;
 import com.example.dllo.newbaidumusic.bean.URLBean;
 import com.example.dllo.newbaidumusic.fragment.AbsFragment;
+import com.example.dllo.newbaidumusic.fragment.ListDetailFragment;
+import com.example.dllo.newbaidumusic.fragment.WebFragment;
 import com.example.dllo.newbaidumusic.minterface.CallBack;
 import com.example.dllo.newbaidumusic.tool.NetTool;
 
@@ -21,7 +27,7 @@ import com.example.dllo.newbaidumusic.tool.NetTool;
  * Created by dllo on 17/2/9.
  */
 
-public class ListFragment extends AbsFragment {
+public class ListFragment extends AbsFragment implements AdapterView.OnItemClickListener {
 
     private ListView listView;
     private ListBean data;
@@ -37,7 +43,10 @@ public class ListFragment extends AbsFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         listView=bindView(R.id.listView_ListFragment);
+        listView.setOnItemClickListener(this);
         adapter=new ListFragmentLVAdapter();
+
+
         final View foot=LayoutInflater.from(context).inflate(R.layout.foot_item,null);
         NetTool.getInstance().startRequest(URLBean.LIST_DATA, ListBean.class, new CallBack<ListBean>() {
             @Override
@@ -54,6 +63,27 @@ public class ListFragment extends AbsFragment {
                 Toast.makeText(context, "网络异常,请检查网络连接", Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        String url;
+        int type;
+        FragmentManager manager=getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction=manager.beginTransaction();
+        if (data.getContent().get(i).getWeb_url().equals("")==true){
+            url=URLBean.LiST_DETAIL_1+data.getContent().get(i).getType()+URLBean.LiST_DETAIL_2;
+            type=1;
+            transaction.add(R.id.framlayout_mainfragment,ListDetailFragment.newInstance(url,type));
+            transaction.commit();
+        }else {
+            url=data.getContent().get(i).getWeb_url();
+            type=2;
+            transaction.add(R.id.framlayout_mainfragment, WebFragment.newInstance(url));
+            transaction.commit();
+        }
+
 
     }
 }

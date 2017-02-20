@@ -18,8 +18,13 @@ import com.example.dllo.newbaidumusic.bean.VideoBean;
 import com.example.dllo.newbaidumusic.fragment.AbsFragment;
 import com.example.dllo.newbaidumusic.minterface.CallBack;
 import com.example.dllo.newbaidumusic.tool.NetTool;
+import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
+import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -29,12 +34,14 @@ import java.io.UnsupportedEncodingException;
 public class VideoFragment extends AbsFragment implements View.OnClickListener {
 
     private RecyclerView recyclerView;
+    private TwinklingRefreshLayout refreshLayout;
+
     private TextView menu,newTv,hotTv;
     private String selectMenu="全部";
     private VideoFragmentRVAdapter adapter;
-    private VideoBean data;
     private int page=1;
     private int HOTSELECT=1; //1视为最热被显示//0为最新
+    private List<VideoBean.ResultBean.MvListBean> data1;
 
     @Nullable
     @Override
@@ -45,6 +52,9 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        data1 = new ArrayList<VideoBean.ResultBean.MvListBean>();
+
+        refreshLayout=bindView(R.id.twink_video);
         recyclerView=bindView(R.id.recycler_videofragment);
         menu=bindView(R.id.tv_songmenu_menu);
         newTv=bindView(R.id.tv_songmenu_new);
@@ -55,6 +65,24 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        refreshLayout.setEnableRefresh(false);
+        refreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
+            @Override
+            public void onLoadMore(TwinklingRefreshLayout refreshLayout) {
+                super.onLoadMore(refreshLayout);
+                switch (HOTSELECT){
+                    case 1:
+                        page++;
+                        getHotDate();
+                        break;
+                    case 0:
+                        page++;
+                        getNewDate();
+                        break;
+                }
+                refreshLayout.finishLoadmore();
+            }
+        });
         adapter.setContext(context);
         getHotDate();
         recyclerView.setLayoutManager(new GridLayoutManager(context,2));
@@ -70,8 +98,19 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
             NetTool.getInstance().startRequest(URLBean.VIDEO_HOT1 + page + URLBean.VIDEO_NEW2+new String(selectMenu.getBytes(),"utf-8"), VideoBean.class, new CallBack<VideoBean>() {
                 @Override
                 public void onSuccess(VideoBean responce) {
-                    data=responce;
-                    adapter.setData(data.getResult());
+                    if (page==1){
+                        data1.clear();
+                    }
+                    for (int i = 0; i < responce.getResult().getMv_list().size(); i++) {
+                        data1.add(responce.getResult().getMv_list().get(i));
+                    }
+                    if (page==1)
+                    {
+                        adapter.setData(data1);
+                    }
+                    else {
+                        adapter.notifyDataSetChanged();
+                    }
                 }
 
                 @Override
@@ -90,10 +129,21 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
             NetTool.getInstance().startRequest(URLBean.VIDEO_NEW1 + page + URLBean.VIDEO_NEW2+new String(selectMenu.getBytes(),"utf-8"), VideoBean.class, new CallBack<VideoBean>() {
                 @Override
                 public void onSuccess(VideoBean responce) {
-                    data=responce;
-                    adapter.setData(data.getResult());
-                }
+                    if (page==1){
+                        data1.clear();
+                    }
 
+                    for (int i = 0; i < responce.getResult().getMv_list().size(); i++) {
+                        data1.add(responce.getResult().getMv_list().get(i));
+                    }
+                    if (page==1)
+                    {
+                        adapter.setData(data1);
+                    }
+                    else {
+                        adapter.notifyDataSetChanged();
+                    }
+                }
                 @Override
                 public void onError(Throwable e) {
                     Toast.makeText(context, "网络不好", Toast.LENGTH_SHORT).show();
@@ -119,6 +169,7 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
                     hotTv.setTextColor(Color.parseColor("#09b9ef"));
                     newTv.setTextColor(Color.parseColor("#aba8a8"));
                     HOTSELECT=1;
+                    page=1;
                     getHotDate();
                 }
                 break;
@@ -129,6 +180,7 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
                     newTv.setTextColor(Color.parseColor("#09b9ef"));
                     hotTv.setTextColor(Color.parseColor("#aba8a8"));
                     HOTSELECT=0;
+                    page=1;
                     getNewDate();
                 }
                 break;

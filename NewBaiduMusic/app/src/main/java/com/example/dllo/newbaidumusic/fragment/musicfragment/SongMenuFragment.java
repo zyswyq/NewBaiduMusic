@@ -20,6 +20,8 @@ import com.example.dllo.newbaidumusic.bean.URLBean;
 import com.example.dllo.newbaidumusic.fragment.AbsFragment;
 import com.example.dllo.newbaidumusic.minterface.CallBack;
 import com.example.dllo.newbaidumusic.tool.NetTool;
+import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
+import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 
 /**
  * Created by dllo on 17/2/9.
@@ -30,6 +32,8 @@ public class SongMenuFragment extends AbsFragment implements View.OnClickListene
     private RecyclerView recyclerView;
     private SongMenuFragmentRVAdapter adapter;
     private SongMenuBean data;
+
+
 
     private TextView hottv,newtv;
     private int page=1;
@@ -44,7 +48,6 @@ public class SongMenuFragment extends AbsFragment implements View.OnClickListene
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         hottv=bindView(R.id.tv_songmenu_hot);
         newtv=bindView(R.id.tv_songmenu_new);
 
@@ -62,6 +65,7 @@ public class SongMenuFragment extends AbsFragment implements View.OnClickListene
         hottv.setOnClickListener(this);
         newtv.setOnClickListener(this);
         getHotData();
+
 
     }
 

@@ -77,6 +77,7 @@ public class RecommendFragment extends AbsFragment implements SwipeRefreshLayout
         img1=new ArrayList<>();
         refresh = bindView(R.id.swipe_recommend);
         refresh.setOnRefreshListener(this);
+
         refresh.setColorSchemeResources(R.color.mainFragmentTablayout);
         rv1 = bindView(R.id.recycler_recommand1);
         rv2 = bindView(R.id.recycler_recommand2);

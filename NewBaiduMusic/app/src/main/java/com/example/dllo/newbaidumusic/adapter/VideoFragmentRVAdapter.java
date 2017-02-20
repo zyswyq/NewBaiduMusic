@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -13,16 +14,19 @@ import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.bean.VideoBean;
 import com.example.dllo.newbaidumusic.tool.BaseViewHolder;
 
+import java.util.List;
+
 /**
  * Created by dllo on 17/2/13.
  */
 
 public class VideoFragmentRVAdapter extends RecyclerView.Adapter<BaseViewHolder>{
 
-    private VideoBean.ResultBean data;
+    private List<VideoBean.ResultBean.MvListBean> data;
     private Context context;
 
-    public void setData(VideoBean.ResultBean data) {
+
+    public void setData(List<VideoBean.ResultBean.MvListBean> data) {
         this.data = data;
         notifyDataSetChanged();
     }
@@ -39,14 +43,14 @@ public class VideoFragmentRVAdapter extends RecyclerView.Adapter<BaseViewHolder>
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
-        holder.setText(R.id.tv_video_title,data.getMv_list().get(position).getTitle());
-        holder.setText(R.id.tv_video_create,data.getMv_list().get(position).getArtist());
-        holder.setImg(R.id.img_video_main,data.getMv_list().get(position).getThumbnail());
+        holder.setText(R.id.tv_video_title,data.get(position).getTitle());
+        holder.setText(R.id.tv_video_create,data.get(position).getArtist());
+        holder.setImg(R.id.img_video_main,data.get(position).getThumbnail());
     }
 
     @Override
     public int getItemCount() {
-        return data!=null?data.getMv_list().size():0;
+        return data!=null?data.size():0;
     }
 
 }
