@@ -32,6 +32,8 @@ public class ListFragment extends AbsFragment implements AdapterView.OnItemClick
     private ListView listView;
     private ListBean data;
     private ListFragmentLVAdapter adapter;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
 
     @Nullable
     @Override
@@ -45,6 +47,8 @@ public class ListFragment extends AbsFragment implements AdapterView.OnItemClick
         listView=bindView(R.id.listView_ListFragment);
         listView.setOnItemClickListener(this);
         adapter=new ListFragmentLVAdapter();
+        manager = getActivity().getSupportFragmentManager();
+
 
 
         final View foot=LayoutInflater.from(context).inflate(R.layout.foot_item,null);
@@ -70,16 +74,19 @@ public class ListFragment extends AbsFragment implements AdapterView.OnItemClick
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         String url;
         int type;
-        FragmentManager manager=getActivity().getSupportFragmentManager();
-        FragmentTransaction transaction=manager.beginTransaction();
+        transaction = manager.beginTransaction();
         if (data.getContent().get(i).getWeb_url().equals("")==true){
             url=URLBean.LiST_DETAIL_1+data.getContent().get(i).getType()+URLBean.LiST_DETAIL_2;
             type=1;
+            transaction.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
+
             transaction.add(R.id.framlayout_mainfragment,ListDetailFragment.newInstance(url,type));
             transaction.commit();
         }else {
             url=data.getContent().get(i).getWeb_url();
             type=2;
+            transaction.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
+
             transaction.add(R.id.framlayout_mainfragment, WebFragment.newInstance(url));
             transaction.commit();
         }

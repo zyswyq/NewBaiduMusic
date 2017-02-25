@@ -1,39 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
 
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/mainfragment_tablayout_height">
-            <ImageView
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            <TextView
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="@color/white"/>
-        </RelativeLayout>
-
-        <ListView
-            android:id="@+id/listview_listdetile"
+        android:layout_height="270dp">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collaps_listdetil"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white" />
-    </LinearLayout>
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:expandedTitleGravity="right|bottom"
+            >
+            //TODO
+            <!--放背景图片和最后会隐藏的-->
+
+            <ImageView
+                android:id="@+id/img_listdetil_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                app:layout_collapseParallaxMultiplier="0.5"/>
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:layout_collapseMode="pin"
+                >
+                //TODO
+                <!--在这里放不会变位置的-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="@dimen/mainfragment_tablayout_height">
+                    <ImageView
+                        android:id="@+id/img_listdetilback"
+                        android:layout_width="@dimen/margin20"
+                        android:layout_height="@dimen/margin20"
+                        android:src="@mipmap/fanhui" />
+                    <TextView
+                        android:id="@+id/tv_listdetiltitle"
+                        android:visibility="invisible"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/user_textsize"/>
+                    <ImageView
+                        android:id="@+id/img_listdetilshare"
+                        android:layout_width="@dimen/margin20"
+                        android:layout_height="@dimen/margin20"
+                        android:src="@mipmap/fenxiang" />
+                </LinearLayout>
+            </android.support.v7.widget.Toolbar>
+
+            //TODO
+            <!--在这里放最后固定在下方的-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="220dp"
+                android:background="@color/white">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:src="@mipmap/ic_listmore_play_normal"/>
+                <TextView
+                    android:id="@+id/tv_listdetil_songnum"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/graytext"
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:src="@mipmap/ic_download_normal"/>
+            </LinearLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_listdetil"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <include layout="@layout/foot_item"/>
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:src="@mipmap/fanhui" />
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

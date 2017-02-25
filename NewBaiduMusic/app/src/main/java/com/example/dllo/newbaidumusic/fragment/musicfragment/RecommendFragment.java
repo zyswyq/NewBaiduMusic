@@ -9,23 +9,33 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.newbaidumusic.R;
+import com.example.dllo.newbaidumusic.adapter.RecommandVPAdapter;
 import com.example.dllo.newbaidumusic.adapter.RecommendLvAdapter;
 import com.example.dllo.newbaidumusic.adapter.RecommendRv1Adapter;
 import com.example.dllo.newbaidumusic.bean.CommendBean;
 import com.example.dllo.newbaidumusic.bean.URLBean;
 import com.example.dllo.newbaidumusic.fragment.AbsFragment;
+import com.example.dllo.newbaidumusic.fragment.RecommandVPFragment;
+import com.example.dllo.newbaidumusic.fragment.WebFragment;
 import com.example.dllo.newbaidumusic.minterface.CallBack;
 import com.example.dllo.newbaidumusic.tool.NetTool;
 
@@ -48,6 +58,14 @@ public class RecommendFragment extends AbsFragment implements SwipeRefreshLayout
     private RecommendRv1Adapter adapter,adapter1,adapter2,adapter3,adapter4,adapter5;
     private RecommendLvAdapter lvadapter;
     private SwipeRefreshLayout refresh;
+    
+    private ViewPager myVp;
+    private List<String> url;
+    private Handler handler;
+
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
+
 
     private List<Bitmap> img1;
 
@@ -56,7 +74,8 @@ public class RecommendFragment extends AbsFragment implements SwipeRefreshLayout
     private CommendBean data;
 
     private ListView listView;
-
+    private List<Fragment> fragments;
+    private RecommandVPAdapter myada;
 
     @Nullable
     @Override
@@ -69,11 +88,54 @@ public class RecommendFragment extends AbsFragment implements SwipeRefreshLayout
         super.onViewCreated(view, savedInstanceState);
         initView();
         initData();
+        setMyAdapter();
+
+
+
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+       startCirclePlay();
+
+
+    }
+    private void startCirclePlay(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true) {
+                    SystemClock.sleep(3000);
+                    changeCirclePlayImg();
+                }
+            }
+        }).start();
+    }
+    private void changeCirclePlayImg() {
+
+
+    handler.post(new Runnable() {
+        @Override
+        public void run() {
+            myVp.setCurrentItem(myVp.getCurrentItem() + 1);
+        }
+    });
+}
+    //在这里控制轮播图
+    private void setMyAdapter() {
     }
 
 
     private void initView() {
-        img=bindView(R.id.img_recommandlebo1);
+        manager=getActivity().getSupportFragmentManager();
+        handler=new Handler();
+        fragments=new ArrayList<>();
+        myVp=bindView(R.id.viewpager_recommand);
+        url=new ArrayList<>();
+        
         img1=new ArrayList<>();
         refresh = bindView(R.id.swipe_recommend);
         refresh.setOnRefreshListener(this);
@@ -93,6 +155,10 @@ public class RecommendFragment extends AbsFragment implements SwipeRefreshLayout
         adapter4 = new RecommendRv1Adapter();
         adapter5 = new RecommendRv1Adapter();
         lvadapter=new RecommendLvAdapter();
+        myada = new RecommandVPAdapter();
+        myada.setContext(context);
+        myVp.setCurrentItem(Integer.MAX_VALUE/2);
+
 
         lvadapter.setContext(context);
         adapter.setContext(context);
@@ -101,6 +167,14 @@ public class RecommendFragment extends AbsFragment implements SwipeRefreshLayout
         adapter3.setContext(context);
         adapter4.setContext(context);
         adapter5.setContext(context);
+        rv1.setLayoutManager(new GridLayoutManager(context,3));
+        rv2.setLayoutManager(new GridLayoutManager(context,3));
+        rv3.setLayoutManager(new GridLayoutManager(context,3));
+        rv4.setLayoutManager(new GridLayoutManager(context,3));
+        rv5.setLayoutManager(new GridLayoutManager(context,3));
+        rv6.setLayoutManager(new GridLayoutManager(context,3));
+
+
     }
 
 
@@ -111,6 +185,15 @@ public class RecommendFragment extends AbsFragment implements SwipeRefreshLayout
             @Override
             public void onSuccess(CommendBean responce) {
                 data = responce;
+                for (int i = 0; i < data.getResult().getFocus().getResult().size(); i++) {
+                    url.add(data.getResult().getFocus().getResult().get(i).getRandpic());
+                }
+
+                myada.setUrl(url);
+                myVp.setAdapter(myada);
+
+
+                
                 adapter.setData(data);
                 adapter1.setData(data);
                 adapter2.setData(data);
@@ -122,36 +205,32 @@ public class RecommendFragment extends AbsFragment implements SwipeRefreshLayout
                 listView.setAdapter(lvadapter);
 
                 adapter.setType(1);
-                rv1.setLayoutManager(new GridLayoutManager(context,3));
                 rv1.setAdapter(adapter);
 
                 adapter1.setType(2);
-                rv2.setLayoutManager(new GridLayoutManager(context,3));
                 rv2.setAdapter(adapter1);
 
                 adapter2.setType(3);
-                rv3.setLayoutManager(new GridLayoutManager(context,3));
                 rv3.setAdapter(adapter2);
 
                 adapter3.setType(4);
-                rv4.setLayoutManager(new GridLayoutManager(context,3));
                 rv4.setAdapter(adapter3);
 
                 adapter4.setType(5);
-                rv5.setLayoutManager(new GridLayoutManager(context,3));
                 rv5.setAdapter(adapter4);
 
                 adapter5.setType(6);
                 rv6.setAdapter(adapter5);
-                rv6.setLayoutManager(new GridLayoutManager(context,3));
+
+                refresh.setRefreshing(false);
 
                 //在这里调用获得Bitmap格式图片的方法
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        getBitmap(data);
-                    }
-                }).start();
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        getBitmap(data);
+//                    }
+//                }).start();
 
             }
 
@@ -160,7 +239,14 @@ public class RecommendFragment extends AbsFragment implements SwipeRefreshLayout
 
             }
         });
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                transaction=manager.beginTransaction();
+                transaction.add(R.id.framlayout_mainfragment, WebFragment.newInstance(data.getResult().getMod_7().getResult().get(i).getType_id()));
+                transaction.commit();
+            }
+        });
 
     }
 
@@ -225,6 +311,6 @@ public class RecommendFragment extends AbsFragment implements SwipeRefreshLayout
 
     @Override
     public void onRefresh() {
-
+        initData();
     }
 }

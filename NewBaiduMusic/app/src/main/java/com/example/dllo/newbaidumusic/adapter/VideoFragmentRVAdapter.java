@@ -2,6 +2,7 @@ package com.example.dllo.newbaidumusic.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,10 @@ public class VideoFragmentRVAdapter extends RecyclerView.Adapter<BaseViewHolder>
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         holder.setText(R.id.tv_video_title,data.get(position).getTitle());
         holder.setText(R.id.tv_video_create,data.get(position).getArtist());
+//        Log.d("VideoFragmentRVAdapter", data.get(position).getArtist());
+
         holder.setImg(R.id.img_video_main,data.get(position).getThumbnail());
+//        Log.d("VideoFragmentRVAdapter", data.get(position).getThumbnail2());
     }
 
     @Override

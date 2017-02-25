@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -71,6 +72,8 @@ public class WebFragment extends AbsFragment{
                 text.setText(title);//a textview
             }
         });
+        WebSettings webSettings=webview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
     }
 
     public static WebFragment newInstance(String url) {
@@ -82,5 +85,7 @@ public class WebFragment extends AbsFragment{
         fragment.setArguments(args);
         return fragment;
     }
+
+
 
 }

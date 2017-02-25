@@ -105,4 +105,13 @@ public class URLBean {
 
     public static String SEARCHING="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.search.catalogSug&format=json&query=";
 
+
+    public static String SONGMENUDETIL1="http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.diy.gedanInfo&from=ios&listid=";
+    public static String SONGMENUDETIL2="&version=5.2.3&from=ios&channel=appstore";
+
+
+    public static String ONLINESONGDATA1="http://tingapi.ting.baidu.com/v1/restserver/ting?from=webapp_music&method=baidu.ting.song.play&format=json&callback=&songid=";
+    public static String ONLINESONGDATA2="&_=1413017198449";
+
+
 }

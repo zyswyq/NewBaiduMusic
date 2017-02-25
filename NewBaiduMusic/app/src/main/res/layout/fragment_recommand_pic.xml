@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="320dp"
+    android:layout_height="@dimen/recommand_vpheight"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/img_recommand_vppic"
+        android:layout_width="320dp"
+        android:layout_height="@dimen/recommand_vpheight"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"/>
+</LinearLayout>

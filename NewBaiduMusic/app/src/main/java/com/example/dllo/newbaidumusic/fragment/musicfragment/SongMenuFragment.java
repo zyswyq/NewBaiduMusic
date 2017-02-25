@@ -3,6 +3,8 @@ package com.example.dllo.newbaidumusic.fragment.musicfragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,7 +20,9 @@ import com.example.dllo.newbaidumusic.adapter.SongMenuFragmentRVAdapter;
 import com.example.dllo.newbaidumusic.bean.SongMenuBean;
 import com.example.dllo.newbaidumusic.bean.URLBean;
 import com.example.dllo.newbaidumusic.fragment.AbsFragment;
+import com.example.dllo.newbaidumusic.fragment.SongMenuDetilFragment;
 import com.example.dllo.newbaidumusic.minterface.CallBack;
+import com.example.dllo.newbaidumusic.minterface.OnRecItemClick;
 import com.example.dllo.newbaidumusic.tool.NetTool;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
@@ -32,6 +36,8 @@ public class SongMenuFragment extends AbsFragment implements View.OnClickListene
     private RecyclerView recyclerView;
     private SongMenuFragmentRVAdapter adapter;
     private SongMenuBean data;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
 
 
 
@@ -48,6 +54,7 @@ public class SongMenuFragment extends AbsFragment implements View.OnClickListene
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        manager=getActivity().getSupportFragmentManager();
         hottv=bindView(R.id.tv_songmenu_hot);
         newtv=bindView(R.id.tv_songmenu_new);
 
@@ -55,6 +62,16 @@ public class SongMenuFragment extends AbsFragment implements View.OnClickListene
         adapter=new SongMenuFragmentRVAdapter();
         adapter.setContext(context);
         adapter.setData(data);
+        adapter.setOnRecItemClick(new OnRecItemClick() {
+            @Override
+            public void onClick(int position) {
+                transaction=manager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
+                transaction.add(R.id.framlayout_mainfragment, SongMenuDetilFragment.newInstance(URLBean.SONGMENUDETIL1+data.getDiyInfo().get(position).getList_id()+URLBean.SONGMENUDETIL2));
+                transaction.commit();
+
+            }
+        });
         recyclerView.setLayoutManager(new GridLayoutManager(context,2));
         recyclerView.setAdapter(adapter);
     }
@@ -64,6 +81,7 @@ public class SongMenuFragment extends AbsFragment implements View.OnClickListene
         super.onActivityCreated(savedInstanceState);
         hottv.setOnClickListener(this);
         newtv.setOnClickListener(this);
+
         getHotData();
 
 

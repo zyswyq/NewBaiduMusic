@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,11 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
         menu=bindView(R.id.tv_songmenu_menu);
         newTv=bindView(R.id.tv_songmenu_new);
         hotTv=bindView(R.id.tv_songmenu_hot);
+//        try {
+////            Log.d("VideoFragment", URLBean.VIDEO_HOT1 + page + URLBean.VIDEO_NEW2 + new String(selectMenu.getBytes(), "utf-8"));
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
         adapter=new VideoFragmentRVAdapter();
     }
 

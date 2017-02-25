@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.bean.SongMenuBean;
+import com.example.dllo.newbaidumusic.minterface.OnRecItemClick;
 import com.example.dllo.newbaidumusic.tool.BaseViewHolder;
 
 /**
@@ -18,6 +19,16 @@ import com.example.dllo.newbaidumusic.tool.BaseViewHolder;
  */
 
 public class SongMenuFragmentRVAdapter extends RecyclerView.Adapter<BaseViewHolder>{
+    public OnRecItemClick getOnRecItemClick() {
+        return onRecItemClick;
+    }
+
+    public void setOnRecItemClick(OnRecItemClick onRecItemClick) {
+        this.onRecItemClick = onRecItemClick;
+    }
+
+    private OnRecItemClick onRecItemClick;
+
 
     private Context context;
     private SongMenuBean data;
@@ -48,11 +59,17 @@ public class SongMenuFragmentRVAdapter extends RecyclerView.Adapter<BaseViewHold
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(BaseViewHolder holder, final int position) {
         holder.setText(R.id.tv_songmenu_title,data.getDiyInfo().get(position).getTitle());
         holder.setText(R.id.tv_songmenu_create,data.getDiyInfo().get(position).getUsername());
         holder.setText(R.id.tv_songmenu_listen,data.getDiyInfo().get(position).getListen_num()+"");
         holder.setImg(R.id.img_songmenu_main,data.getDiyInfo().get(position).getList_pic());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onRecItemClick.onClick(position);
+            }
+        });
     }
 
     @Override

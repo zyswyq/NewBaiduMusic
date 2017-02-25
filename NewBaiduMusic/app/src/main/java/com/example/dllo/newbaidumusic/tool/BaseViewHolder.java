@@ -71,6 +71,12 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public BaseViewHolder setTextColor(int id,int color){
+        TextView textView=getView(id);
+        textView.setTextColor(color);
+        return this;
+    }
+
     public BaseViewHolder setImg(int id,String url){
         ImageView imageView=getView(id);
         if (url!=null){

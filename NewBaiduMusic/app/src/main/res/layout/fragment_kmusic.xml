@@ -21,17 +21,6 @@
             android:orientation="vertical"
             >
 
-            <!--轮播图-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="@dimen/kmusic_bannerheight"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:background="#60f"-->
-                <!--android:layout_marginBottom="@dimen/kmusic_viewheight">-->
-                <!---->
-            <!--</LinearLayout>-->
-
             <com.youth.banner.Banner
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/kmusic_banner"

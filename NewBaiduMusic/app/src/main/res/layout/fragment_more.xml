@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/include_mainfragment" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <ImageView
+                    android:id="@+id/img_more_signin"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@mipmap/icon_unsel"
+                    android:padding="10dp"
+                    android:layout_margin="@dimen/margin10"
+                    android:src="@mipmap/img_option_setting_user" />
+
+                <TextView
+                    android:id="@+id/tv_more_signin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/img_more_signin"
+                    android:text="立即登录"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/img_more_signin"
+                    android:text="登陆后,自动为你同步歌曲"
+                    android:layout_below="@id/tv_more_signin"
+                    android:textColor="@color/graytext"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/bt_option_setting_sign_in_normal" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/listView_more"
+                android:layout_width="match_parent"
+                android:layout_height="416dp" />
+
+            <include layout="@layout/foot_item" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <include layout="@layout/include_mainfragment" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mainfragment_tablayout_height">
+
+        <ImageView
+            android:id="@+id/img_more_fragment_fanhui"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin20"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/fanhui" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mainfragment_tablayout_height"
+            android:layout_toRightOf="@id/img_more_fragment_fanhui"
+            android:gravity="center_vertical"
+            android:text="更多"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

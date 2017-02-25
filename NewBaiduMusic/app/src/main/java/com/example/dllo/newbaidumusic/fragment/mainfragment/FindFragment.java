@@ -56,7 +56,7 @@ public class FindFragment extends AbsFragment implements View.OnClickListener {
         shopmore=bindView(R.id.tv_findshopmore);
         shopmore.setOnClickListener(this);
         manager=getActivity().getSupportFragmentManager();
-        transaction=manager.beginTransaction();
+
         shop1=bindView(R.id.img_find_shop1);
 
         //为防止ScrollView在开始就滚动到底,给上方控件设置焦点
@@ -106,6 +106,7 @@ public class FindFragment extends AbsFragment implements View.OnClickListener {
             case R.id.tv_findshopmore:
                 String url="http://music.baidu.com/mall?from=pcweb_music_qrcode";
                 Fragment fragment=WebFragment.newInstance(url);
+                transaction=manager.beginTransaction();
                 transaction.add(R.id.framlayout_mainfragment,fragment);
                 transaction.commit();
 

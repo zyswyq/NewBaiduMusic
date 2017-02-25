@@ -42,6 +42,8 @@ public class MainFragment extends AbsFragment implements View.OnClickListener {
     private UserFragment userFragment;
     private FragmentManager manager;
     private FragmentTransaction transaction;
+    private FragmentTransaction transaction1;
+    private FragmentTransaction transaction2;
 
     @Nullable
     @Override
@@ -68,13 +70,12 @@ public class MainFragment extends AbsFragment implements View.OnClickListener {
         myTab=bindView(R.id.tablayout_mainfragment);
         myVp=bindView(R.id.vp_mainfragment);
         fragments=new ArrayList<>();
-        adapter=new MainFragmentVPAdapter(getActivity().getSupportFragmentManager());
+        adapter=new MainFragmentVPAdapter(getChildFragmentManager());
         more=bindView(R.id.imgbtn_main_more);
         search=bindView(R.id.imgbtn_main_search);
 
 
         manager = getFragmentManager();
-        transaction = manager.beginTransaction();
 
 
         more.setOnClickListener(this);
@@ -98,13 +99,20 @@ public class MainFragment extends AbsFragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imgbtn_main_more:
-
+                transaction1 = manager.beginTransaction();
+//                transaction1.add(R.id.framlayout_mainfragment,new MoreFragment());
+                transaction1.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
+                transaction1.add(R.id.framlayout_mainfragment,new MoreFragment());
+                transaction1.commit();
                 break;
             case R.id.imgbtn_main_search:
-                FragmentTransaction transaction=manager.beginTransaction();
-                transaction.add(R.id.framlayout_mainfragment,new SearchFragment());
-                transaction.commit();
+                transaction2 = manager.beginTransaction();
+                transaction2.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
+                transaction2.add(R.id.framlayout_mainfragment,new SearchFragment());
+                transaction2.commit();
                 break;
         }
     }
+
+
 }

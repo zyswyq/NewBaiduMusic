@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mainfragment_tablayout_height"
+        android:descendantFocusability="blocksDescendants">
+
+        <include layout="@layout/include_mainfragment"/>
+        
+        <ImageView
+            android:id="@+id/img_localmusic_fanhui"
+            android:layout_width="@dimen/mainfragment_tablayout_height"
+            android:layout_height="@dimen/mainfragment_tablayout_height"
+            android:padding="10dp"
+            android:src="@mipmap/fanhui"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_toRightOf="@id/img_localmusic_fanhui"
+            android:text="我的音乐"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+        <ImageView
+            android:src="@drawable/mainsearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_localmusic_allplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="随机播放全部"
+        android:layout_margin="@dimen/margin10"/>
+
+    <ListView
+        android:id="@+id/listview_localmusic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
