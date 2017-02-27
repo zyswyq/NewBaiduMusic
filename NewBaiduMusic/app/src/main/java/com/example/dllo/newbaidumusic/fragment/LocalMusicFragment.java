@@ -75,7 +75,7 @@ public class LocalMusicFragment extends AbsFragment implements View.OnClickListe
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 adapter.setPlay(i);
                 adapter.notifyDataSetChanged();
-                onLocalPlay.playitem(i,0);
+                onLocalPlay.playitem(i,0,true);
                 //TODO
                 //向mainActivity传值
 
@@ -110,7 +110,7 @@ public class LocalMusicFragment extends AbsFragment implements View.OnClickListe
                 adapter.notifyDataSetChanged();
                 //TODO
                 //向mainActivity传值
-                onLocalPlay.playitem(playitem,2);
+                onLocalPlay.playitem(playitem,2,true);
 
                 break;
             case R.id.img_localmusic_fanhui:

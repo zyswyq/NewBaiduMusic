@@ -1,68 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/img_mainpopbackground"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black"
-        />
+        android:layout_height="match_parent" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_mainpop"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:background="@color/Blue"/>
+            android:layout_height="350dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/king"
             android:orientation="horizontal">
+
             <ImageView
+                android:id="@+id/img_mainpoplike"
+
                 style="@style/maintabimg"
-                android:src="@mipmap/bt_playpage_button_like_normal_new"/>
+                android:src="@mipmap/bt_playpage_button_like_normal_new" />
+
             <ImageView
+                android:id="@+id/img_mainpopdownload"
+
                 style="@style/maintabimg"
-                android:src="@mipmap/bt_playpage_button_download_normal_new"/>
+                android:src="@mipmap/bt_playpage_button_download_normal_new" />
+
             <ImageView
+                android:id="@+id/img_mainpopshare"
+
                 style="@style/maintabimg"
-                android:src="@mipmap/bt_playpage_button_share_normal_new"/>
+                android:src="@mipmap/bt_playpage_button_share_normal_new" />
+
             <ImageView
+                android:id="@+id/img_mainpoppinglun"
+
                 style="@style/maintabimg"
-                android:src="@mipmap/bt_playpage_button_comment_normal"/>
+                android:src="@mipmap/bt_playpage_button_comment_normal" />
+
             <ImageView
+                android:id="@+id/img_mainpopmore"
+
                 style="@style/maintabimg"
-                android:src="@mipmap/bt_playpage_moreactions_normal_new"/>
+                android:src="@mipmap/bt_playpage_moreactions_normal_new" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="horizontal">
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:id="@+id/tv_mainpoppalytime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+
             <SeekBar
+                android:id="@+id/seekbar_mainpopprogress"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:thumb="@mipmap/bt_playpage_button_progress_normal"
+                android:maxHeight="5px"
+                android:minHeight="5px"
                 android:progress="50"
-                android:progressDrawable="@drawable/progressbar_color"/>
+                android:progressDrawable="@drawable/progressbar_color"
+                android:thumb="@mipmap/bt_playpage_button_progress_normal" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:id="@+id/tv_mainpopalltime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
+            <ImageView
+                android:id="@+id/img_mainpoptype"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/bt_list_button_roundplay_normal"
+                android:layout_height="50dp"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/img_mainpoplast"
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/bt_playpage_button_previous_normal_new"
+                android:layout_height="match_parent"
+                />
+
+            <ImageView
+                android:id="@+id/img_mainpopplay"
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/bt_playpage_button_play_normal_new"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/img_mainpopnext"
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/bt_playpage_button_next_normal_new"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/img_mainpoplist"
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/playpage_list"
+                android:layout_height="30dp"
+                android:layout_gravity="center"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -70,14 +141,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/img_mainpopback"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="@dimen/margin20"
+            android:src="@mipmap/playpage_downclose"/>
+
         <android.support.design.widget.TabLayout
             android:id="@+id/tablayout_mainpop"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 

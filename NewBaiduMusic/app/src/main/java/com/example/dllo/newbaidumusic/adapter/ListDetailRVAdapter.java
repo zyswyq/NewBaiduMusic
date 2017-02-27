@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.bean.ListDetilBean;
+import com.example.dllo.newbaidumusic.minterface.OnNewRecItemClick;
+import com.example.dllo.newbaidumusic.minterface.OnRecItemClick;
 import com.example.dllo.newbaidumusic.tool.BaseViewHolder;
 
 /**
@@ -16,9 +18,14 @@ import com.example.dllo.newbaidumusic.tool.BaseViewHolder;
 
 public class ListDetailRVAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
+    private OnNewRecItemClick onRecItemClick;
     private ListDetilBean data;
     private Context context;
     private int k=0;
+
+    public void setOnRecItemClick(OnNewRecItemClick onRecItemClick) {
+        this.onRecItemClick = onRecItemClick;
+    }
 
     public void setData(ListDetilBean data) {
         this.data = data;
@@ -36,8 +43,14 @@ public class ListDetailRVAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(BaseViewHolder holder, final int position) {
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onRecItemClick.onClick(position);
+            }
+        });
         switch (position) {
 
             case 0:

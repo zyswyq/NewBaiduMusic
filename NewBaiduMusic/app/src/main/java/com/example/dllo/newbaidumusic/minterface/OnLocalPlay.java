@@ -6,5 +6,5 @@ package com.example.dllo.newbaidumusic.minterface;
 
 public interface OnLocalPlay {
 
-    void playitem(int position,int type);
+    void playitem(int position,int type,boolean isLocal);
 }

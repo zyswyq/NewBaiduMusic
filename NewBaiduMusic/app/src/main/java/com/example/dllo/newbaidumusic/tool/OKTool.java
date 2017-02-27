@@ -37,6 +37,7 @@ public class OKTool implements NetInterface{
 
     @Override
     public void startRequest(String url, final CallBack<String> callBack) {
+
         Request request=new Request.Builder().url(url).build();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override

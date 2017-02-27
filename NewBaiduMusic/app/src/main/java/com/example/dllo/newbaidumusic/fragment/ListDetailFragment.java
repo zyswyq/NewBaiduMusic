@@ -1,6 +1,6 @@
 package com.example.dllo.newbaidumusic.fragment;
 
-import android.os.Build;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -12,22 +12,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.adapter.ListDetailRVAdapter;
 import com.example.dllo.newbaidumusic.bean.ListDetilBean;
 import com.example.dllo.newbaidumusic.minterface.CallBack;
+import com.example.dllo.newbaidumusic.minterface.OnLinePlay;
+import com.example.dllo.newbaidumusic.minterface.OnNewRecItemClick;
+import com.example.dllo.newbaidumusic.minterface.OnRecItemClick;
 import com.example.dllo.newbaidumusic.tool.NetTool;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dllo on 17/2/20.
  */
 
-public class ListDetailFragment extends AbsFragment implements View.OnClickListener {
+public class ListDetailFragment extends AbsFragment implements View.OnClickListener, OnNewRecItemClick {
+
+    private OnLinePlay onLinePlay;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        onLinePlay = (OnLinePlay) context;
+    }
 
     private RecyclerView recyclerView;
     private String url;
@@ -86,6 +98,16 @@ public class ListDetailFragment extends AbsFragment implements View.OnClickListe
             public void onSuccess(ListDetilBean responce) {
                 data=responce;
                 adapter.setData(data);
+                adapter.setOnRecItemClick(new OnNewRecItemClick() {
+                    @Override
+                    public void onClick(int position) {
+                        List<String> songid=new ArrayList<>();
+                        for (ListDetilBean.SongListBean songListBean : data.getSong_list()) {
+                            songid.add(songListBean.getSong_id());
+                        }
+                        onLinePlay.playonline(songid,position,false,url);
+                    }
+                });
                 recyclerView.setAdapter(adapter);
                 Glide.with(context).load(data.getBillboard().getPic_s640()).into(background);
 //                coll.setContentScrim();
@@ -113,5 +135,14 @@ public class ListDetailFragment extends AbsFragment implements View.OnClickListe
                 break;
 
         }
+    }
+
+    @Override
+    public void onClick(int position) {
+        List<String> songid=new ArrayList<>();
+        for (ListDetilBean.SongListBean songListBean : data.getSong_list()) {
+            songid.add(songListBean.getSong_id());
+        }
+        onLinePlay.playonline(songid,position,false,url);
     }
 }
