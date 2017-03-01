@@ -225,6 +225,12 @@ public class SongService extends Service {
                     mediaPlayer.reset();
                     playOnLine();
                     break;
+                case 3:
+                    index++;
+                    if (index>=UrlData.size()){
+
+                    }
+                    mediaPlayer.reset();
             }
         }
 

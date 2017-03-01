@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.fragment.AbsFragment;
+import com.example.dllo.newbaidumusic.fragment.LikeFragment;
 import com.example.dllo.newbaidumusic.fragment.LocalMusicFragment;
 
 /**
@@ -23,6 +25,7 @@ public class UserFragment extends AbsFragment implements View.OnClickListener {
     private LinearLayout sdplay;
     private FragmentManager manager;
     private FragmentTransaction transaction;
+    private RelativeLayout likeRelative;
 
     @Nullable
     @Override
@@ -36,6 +39,8 @@ public class UserFragment extends AbsFragment implements View.OnClickListener {
         sdplay=bindView(R.id.linearlayout_user_sdmusic);
         manager=getActivity().getSupportFragmentManager();
         sdplay.setOnClickListener(this);
+        likeRelative=bindView(R.id.relativelayout_user_favourt);
+        likeRelative.setOnClickListener(this);
     }
 
     @Override
@@ -45,6 +50,12 @@ public class UserFragment extends AbsFragment implements View.OnClickListener {
                 transaction=manager.beginTransaction();
                 transaction.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
                 transaction.add(R.id.framlayout_mainfragment,new LocalMusicFragment());
+                transaction.commit();
+                break;
+            case R.id.relativelayout_user_favourt:
+                transaction=manager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
+                transaction.add(R.id.framlayout_mainfragment,new LikeFragment());
                 transaction.commit();
                 break;
         }

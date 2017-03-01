@@ -1,5 +1,6 @@
 package com.example.dllo.newbaidumusic.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -11,17 +12,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.adapter.SongMenuDetilRvAdapter;
+import com.example.dllo.newbaidumusic.bean.ListDetilBean;
 import com.example.dllo.newbaidumusic.bean.SongMenuDetilBean;
 import com.example.dllo.newbaidumusic.minterface.CallBack;
+import com.example.dllo.newbaidumusic.minterface.OnLinePlay;
+import com.example.dllo.newbaidumusic.minterface.OnRecItemClick;
 import com.example.dllo.newbaidumusic.tool.NetTool;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dllo on 17/2/22.
  */
 
-public class SongMenuDetilFragment extends AbsFragment implements View.OnClickListener {
+public class SongMenuDetilFragment extends AbsFragment implements View.OnClickListener,OnRecItemClick {
     private String url;
     private SongMenuDetilBean data;
     private RecyclerView rec;
@@ -30,8 +38,13 @@ public class SongMenuDetilFragment extends AbsFragment implements View.OnClickLi
     private FragmentManager manager;
     private FragmentTransaction transaction;
 
+    private OnLinePlay onLinePlay;
 
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        onLinePlay= (OnLinePlay) context;
+    }
 
     public static SongMenuDetilFragment newInstance(String url) {
 
@@ -72,8 +85,10 @@ public class SongMenuDetilFragment extends AbsFragment implements View.OnClickLi
             public void onSuccess(SongMenuDetilBean responce) {
                 data=responce;
                 adapte.setData(data);
+                adapte.setItemClick(SongMenuDetilFragment.this);
                 rec.setLayoutManager(new LinearLayoutManager(context));
                 rec.setAdapter(adapte);
+                Glide.with(context).load(data.getPic_500()).into(img);
 
 
             }
@@ -96,5 +111,14 @@ public class SongMenuDetilFragment extends AbsFragment implements View.OnClickLi
                 transaction.commit();
                 break;
         }
+    }
+
+    @Override
+    public void onClick(int position) {
+        List<String> songid=new ArrayList<>();
+        for (SongMenuDetilBean.ContentBean contentBean : data.getContent()) {
+            songid.add(contentBean.getSong_id());
+        }
+        onLinePlay.playonline(songid,position,false,url);
     }
 }

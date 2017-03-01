@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -41,12 +42,13 @@ import com.example.dllo.newbaidumusic.minterface.CallBack;
 import com.example.dllo.newbaidumusic.minterface.OnLinePlay;
 import com.example.dllo.newbaidumusic.minterface.OnLocalPlay;
 import com.example.dllo.newbaidumusic.mservice.SongService;
+import com.example.dllo.newbaidumusic.mydb.DBTool;
+import com.example.dllo.newbaidumusic.mydb.LikeSongBean;
 import com.example.dllo.newbaidumusic.tool.NetTool;
 import com.example.dllo.newbaidumusic.view.RunTextView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
     private FragmentManager manager;
     private FragmentTransaction transaction;
     private MainFragment mainFragment;
-    private boolean ISLOCALMUSIC;//为1的时候播放本地音乐
+    private boolean ISLOCALMUSIC = true;//为1的时候播放本地音乐
 
     private boolean IsEnd;//判断for语句是否循环结束
 
@@ -94,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
     private ExecutorService singleThreadExecutor;
 
     private MainTabPopVpAdapter adapter;
+    private LikeSongBean songBean;
+    private View view;
 
 
     @Override
@@ -155,8 +159,6 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
         list = (ImageView) findViewById(R.id.img_maintab_list);
 
 
-
-
     }
 
     //在这里接受本地歌曲传来的数据
@@ -208,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
                                 if (ISLOCALMUSIC) {
                                     if (songBinder.getDuration() - songBinder.getCurrentPosition() < 1000) {
                                         songBinder.nextsong(Order);
+
                                     } else {
                                         progressBar.setMax((int) songBinder.getDuration());
                                         progressBar.setProgress(songBinder.getCurrentPosition());
@@ -281,7 +284,10 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
                 }
                 break;
             case R.id.linear_maintab:
-                openPop();
+                if (ISLOCALMUSIC == false) {
+                    openPop();
+                }
+
 
                 break;
         }
@@ -291,10 +297,12 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
 
     //在这里弹出popupwindow
     private void openPop() {
-        View view = LayoutInflater.from(this).inflate(R.layout.pop_maintab, null);
+        view = LayoutInflater.from(this).inflate(R.layout.pop_maintab, null);
         setView(view);
         popupWindow = new PopupWindow(view, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT, true);
+
         popupWindow.setTouchable(true);
+        popupWindow.setFocusable(false);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setBackgroundDrawable(new BitmapDrawable(getResources(), (Bitmap) null));
         View view1 = LayoutInflater.from(this).inflate(R.layout.fragment_main, null);
@@ -312,12 +320,15 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
         lastImg = (ImageView) view.findViewById(R.id.img_mainpoplast);
         nextImg = (ImageView) view.findViewById(R.id.img_mainpopnext);
         playTypeImg = (ImageView) view.findViewById(R.id.img_mainpoptype);
-        viewPager = (ViewPager)view.findViewById(R.id.vp_mainpop);
+        viewPager = (ViewPager) view.findViewById(R.id.vp_mainpop);
         tabLayout = (TabLayout) view.findViewById(R.id.tablayout_mainpop);
+
+
         if (ISLOCALMUSIC) {
 
         } else if (onlinedata != null) {
-            adapter=new MainTabPopVpAdapter();
+            setLikeImg();
+            adapter = new MainTabPopVpAdapter();
             adapter.setContext(this);
             adapter.setData(onlinedata.get(songBinder.getIndex()));
 
@@ -333,22 +344,32 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
                 public void onClick(View view) {
                     popupWindow.dismiss();
                     setBtnImg();
+                    setMainTabText();
                 }
             });
             likeImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
+
+                    if (DBTool.getInstance().isSava(songBean)) {
+                        likeImg.setImageResource(R.mipmap.bt_playpage_button_like_normal_new);
+                        DBTool.getInstance().deleteBySongId(songBean.getSongId());
+                    } else {
+                        likeImg.setImageResource(R.mipmap.bt_playpage_button_like_hl_new);
+                        DBTool.getInstance().insertLike(songBean);
+                        Log.d("alalala", songBean.getSongId());
+                    }
                 }
             });
             playImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (songBinder.isPlaying()){
+                    if (songBinder.isPlaying()) {
                         songBinder.pause();
                         setPopPlayImg();
                         setBtnImg();
-                    }else {
+                    } else {
                         songBinder.continuePlay();
                         setBtnImg();
                         setPopPlayImg();
@@ -365,6 +386,7 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
                     adapter.notifyDataSetChanged();
                     setPopPlayImg();
                     setBtnImg();
+                    setLikeImg();
 
                 }
             });
@@ -372,23 +394,27 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
                 @Override
                 public void onClick(View view) {
                     songBinder.nextOnLineSong(Order);
-                    adapter.setData(onlinedata.get(songBinder.getIndex()));
+                    if (songBinder.getIndex() < onlinedata.size()) {
+                        adapter.setData(onlinedata.get(songBinder.getIndex()));
+                    } else {
+                        Toast.makeText(MainActivity.this, "顺序播放已无歌曲", Toast.LENGTH_SHORT).show();
+                    }
                     viewPager.setAdapter(adapter);
                     viewPager.setCurrentItem(1);
 
                     adapter.notifyDataSetChanged();
                     setBtnImg();
                     setPopPlayImg();
+                    setLikeImg();
                 }
             });
             playTypeImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (Order<3)
-                    {
+                    if (Order < 3) {
                         Order++;
-                    }else {
-                        Order=0;
+                    } else {
+                        Order = 0;
                     }
                     setPlayTypeImg();
                 }
@@ -399,10 +425,30 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
 
     }
 
-    private void setPopPlayImg() {
-        if (songBinder.isPlaying()){
-            playImg.setImageResource(R.mipmap.bt_playpage_button_pause_normal_new);
+    private void setLikeImg() {
+        if (Order==3&&songBinder.getIndex()>=onlinedata.size()){
+            Toast.makeText(this, "顺序播放已结束", Toast.LENGTH_SHORT).show();
         }else {
+            songBean = new LikeSongBean();
+            songBean.setSongId(songid.get(songBinder.getIndex()));
+            songBean.setPicUrl(onlinedata.get(songBinder.getIndex()).getSonginfo().getPic_big());
+            songBean.setTitle(onlinedata.get(songBinder.getIndex()).getSonginfo().getTitle());
+            songBean.setSinger(onlinedata.get(songBinder.getIndex()).getSonginfo().getAuthor());
+            if (DBTool.getInstance().isSava(songBean)) {
+                likeImg.setImageResource(R.mipmap.bt_playpage_button_like_hl_new);
+            } else {
+                likeImg.setImageResource(R.mipmap.bt_playpage_button_like_normal_new);
+            }
+        }
+      
+
+
+    }
+
+    private void setPopPlayImg() {
+        if (songBinder.isPlaying()) {
+            playImg.setImageResource(R.mipmap.bt_playpage_button_pause_normal_new);
+        } else {
             playImg.setImageResource(R.mipmap.bt_playpage_button_play_normal_new);
         }
     }
@@ -414,7 +460,7 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
     }
 
     private void setPlayTypeImg() {
-        switch (Order){
+        switch (Order) {
             case 0:
                 playTypeImg.setImageResource(R.mipmap.bt_list_button_roundplay_normal);
                 break;
@@ -454,9 +500,6 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
         if (urlInside.equals(url)) {
             songBinder.setIndex(Index1);
             songBinder.playOnLine();
-            Log.d("MainActivity1", "Index:" + Index1);
-            Log.d("MainActivity1", onlinedata.get(Index1).getSonginfo().getAlbum_title());
-
             song.setText(onlinedata.get(Index1).getSonginfo().getTitle());
             singer.setText(onlinedata.get(Index1).getSonginfo().getAuthor());
             Glide.with(MainActivity.this).load(onlinedata.get(songBinder.getIndex()).getSonginfo().getPic_premium()).into(mainimg);
@@ -481,22 +524,52 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
             singleThreadExecutor.execute(new Runnable() {
                 @Override
                 public void run() {
-                    for (String string : songId) {
+                    for (final String string : songId) {
                         NetTool.getInstance().startRequest(URLBean.ONLINESONGDATA1 + string + URLBean.ONLINESONGDATA2, new CallBack<String>() {
                             @Override
                             public void onSuccess(String responce) {
+                                Log.d("MainActivity", responce);
                                 String newres = responce.substring(1, responce.length() - 2);
+                                Log.d("MainActivity1", "songId:" + string);
+                                Log.d("MainActivity1", URLBean.ONLINESONGDATA1 + string + URLBean.ONLINESONGDATA2);
                                 Gson gson = new Gson();
                                 OnLineSongBean bean = gson.fromJson(newres, OnLineSongBean.class);
 
-                                onlinedata.add(bean);
-                                onLineUrl.add(bean.getBitrate().getFile_link());
 
+                                if (bean.getBitrate()!=null){
+                                    onLineUrl.add(bean.getBitrate().getFile_link());
+                                    onlinedata.add(bean);
+                                }else {
+
+                                }
 
                                 if (onlinedata.size() == songId.size()) {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
+
+                                            //在这里对其进行排序
+                                            for (int j = 0; j < songId.size(); j++) {
+                                                for (int i = 0; i < onlinedata.size(); i++) {
+                                                    if (onlinedata.get(i).getSonginfo().getSong_id().equals(songId.get(j))) {
+                                                        OnLineSongBean a = onlinedata.get(j);
+                                                        OnLineSongBean b=onlinedata.get(i);
+                                                        String p=onLineUrl.get(j);
+                                                        String q=onLineUrl.get(i);
+                                                        onlinedata.remove(j);
+                                                        onLineUrl.remove(j);
+                                                        onLineUrl.add(j,q);
+                                                        onLineUrl.remove(i);
+                                                        onLineUrl.add(i,p);
+                                                        onlinedata.add(j,b);
+                                                        onlinedata.remove(i);
+                                                        onlinedata.add(i,a);
+                                                    }
+                                                }
+
+                                            }
+
+
                                             song.setText(onlinedata.get(index).getSonginfo().getTitle());
                                             singer.setText(onlinedata.get(index).getSonginfo().getAuthor());
                                             Glide.with(MainActivity.this).load(onlinedata.get(index).getSonginfo().getPic_premium()).into(mainimg);
@@ -559,9 +632,41 @@ public class MainActivity extends AppCompatActivity implements OnLocalPlay, View
         }
     }
 
+    public void setMainTabText() {
+        if (songBinder.getIndex() < onlinedata.size()) {
+            song.setText(onlinedata.get(songBinder.getIndex()).getSonginfo().getTitle());
+            singer.setText(onlinedata.get(songBinder.getIndex()).getSonginfo().getAuthor());
+            Glide.with(MainActivity.this).load(onlinedata.get(songBinder.getIndex()).getSonginfo().getPic_premium()).into(mainimg);
+        }
+
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (ISLOCALMUSIC == false &&popupWindow!=null&& popupWindow.isShowing()) {
+                setBtnImg();
+                setMainTabText();
+                popupWindow.dismiss();
+            } else if (popupWindow != null && popupWindow.isShowing()) {
+                popupWindow.dismiss();
+            } else {
+                MainActivity.this.finish();
+            }
+
+            return true;
+        }
+        return true;
+    }
+
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        setBtnImg();
+        if (popupWindow.isShowing()) {
+            setMainTabText();
+            setBtnImg();
+        }
+        popupWindow.dismiss();
+
     }
+
 }
