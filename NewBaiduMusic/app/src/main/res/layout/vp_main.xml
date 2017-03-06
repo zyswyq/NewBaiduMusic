@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="350dp">
+    android:layout_height="@dimen/pop350">
 
     <ImageView
         android:id="@+id/img_vp_main_back"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="@dimen/songmenu_item_mainheight"
         android:src="#99000000"/>
     
     <LinearLayout
-        android:layout_width="250dp"
+        android:layout_width="@dimen/songmenu_item_mainheight"
         android:layout_centerHorizontal="true"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -18,12 +18,12 @@
         <ImageView
             android:id="@+id/img_popvpmainimg"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="@dimen/songmenu_item_mainheight"
             android:scaleType="centerCrop"/>
         <TextView
             android:id="@+id/tv_popvpmaintitle"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/margin40"
             android:textSize="35sp"
             android:textColor="@color/black"
             android:gravity="center"/>
@@ -31,7 +31,7 @@
         <TextView
             android:id="@+id/tv_popvpmainsinger"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="@dimen/margin20"
             android:gravity="center" />
         
         

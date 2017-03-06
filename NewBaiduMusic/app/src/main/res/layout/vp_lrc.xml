@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:lrc="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/pop350">
+
+    <com.example.dllo.newbaidumusic.view.LrcView
+        android:id="@+id/lrcview_pop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center"
+        lrc:animationDuration="1000"
+        lrc:currentTextColor="?attr/colorAccent"
+        lrc:dividerHeight="24dp"
+        lrc:normalTextColor="@android:color/white"
+        lrc:textSize="16sp"/>
+
 
 
 </LinearLayout>

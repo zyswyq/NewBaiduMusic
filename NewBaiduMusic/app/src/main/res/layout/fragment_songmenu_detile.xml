@@ -8,7 +8,7 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="270dp">
+        android:layout_height="@dimen/appbarlayoutheight">
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collaps_songmenudetil"
             android:layout_width="match_parent"
@@ -24,11 +24,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                app:layout_collapseParallaxMultiplier="0.5"/>
+                app:layout_collapseParallaxMultiplier="0.1"/>
 
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/toolbarheight"
                 app:layout_collapseMode="pin"
                 >
                 //TODO
@@ -63,28 +63,28 @@
             <!--在这里放最后固定在下方的-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/mainfragment_tablayout_height"
                 android:orientation="horizontal"
-                android:layout_marginTop="220dp"
+                android:layout_marginTop="@dimen/toollinearmargin"
                 android:background="@color/white">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/margin20"
+                    android:layout_height="@dimen/margin20"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_margin="@dimen/margin10"
                     android:src="@mipmap/ic_listmore_play_normal"/>
                 <TextView
                     android:id="@+id/tv_songmenudetil_songnum"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:textColor="@color/graytext"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/tooltvtextsize"
                     android:gravity="center_vertical"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:layout_width="30dp"
+                    android:layout_width="@dimen/toolimgheight2"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="@dimen/margin10"
                     android:src="@mipmap/ic_download_normal"/>
             </LinearLayout>
 

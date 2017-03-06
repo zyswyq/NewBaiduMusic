@@ -5,7 +5,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/mainActivty_below_height"
         android:text="没有更多"
         android:gravity="center"/>
     <include layout="@layout/foot_item"/>

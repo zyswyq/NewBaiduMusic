@@ -48,12 +48,23 @@
     <string name="recommend_tv8">乐播节目</string>
     <string name="recommend_tv9">专栏</string>
 
+    <string name="mylikesong">我喜欢的单曲</string>
+    <string name="mysong">我的音乐</string>
+    <string name="suijibofang">随机播放全部歌曲</string>
+    <string name="signinnow">立即登录</string>
+    <string name="denglutongbu">登陆后,自动为你同步歌曲</string>
+
+    <string name="singer">歌手</string>
+    <string name="songbind">歌曲分类</string>
+    <string name="radio">电台</string>
+    <string name="vipplace">VIP专区</string>
+
 
 
     <string name="search_edithint">歌曲,歌手,歌词,朋友,话题</string>
 
 
-
+    <string name="sharetext">一起来听听吧</string>
 
 
 

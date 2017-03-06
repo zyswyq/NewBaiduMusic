@@ -14,8 +14,13 @@ import android.view.View;
 import com.example.dllo.newbaidumusic.R;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -40,6 +45,7 @@ public class LrcView extends View {
     private int mCurrentLine = 0;
     private float mAnimOffset;
     private boolean mIsEnd = false;
+    private HttpURLConnection connection;
 
     public LrcView(Context context) {
         this(context, null);
@@ -115,19 +121,65 @@ public class LrcView extends View {
      * @param lrcName assets下的歌词文件名
      * @throws Exception
      */
-    public void loadLrc(String lrcName) throws Exception {
+
+//    public void loadLrc(String lrcName) throws IOException {
+//        mLrcTexts.clear();
+//        mLrcTimes.clear();
+//        BufferedReader br = new BufferedReader(new InputStreamReader(getResources().getAssets().open(lrcName)));
+//        String line;
+//        while ((line = br.readLine()) != null) {
+//            String[] arr = parseLine(line);
+//            if (arr != null) {
+//                mLrcTimes.add(Long.parseLong(arr[0]));
+//                mLrcTexts.add(arr[1]);
+//            }
+//        }
+//        br.close();
+//
+//    }
+
+    public void loadLrc(String lrcName, int type){
         mLrcTexts.clear();
         mLrcTimes.clear();
-        BufferedReader br = new BufferedReader(new InputStreamReader(getResources().getAssets().open(lrcName)));
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] arr = parseLine(line);
-            if (arr != null) {
-                mLrcTimes.add(Long.parseLong(arr[0]));
-                mLrcTexts.add(arr[1]);
-            }
+        URL   url = null;
+        try {
+            url = new URL(lrcName);
+            connection = (HttpURLConnection) url.openConnection();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        br.close();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    InputStream is = connection.getInputStream();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    String line = "";
+                    String[] arr ;
+                    while ((line = br.readLine()) != null) {
+                        arr = parseLine(line);
+                        if (arr != null) {
+                            mLrcTimes.add(Long.parseLong(arr[0]));
+                            mLrcTexts.add(arr[1]);
+                        }
+                    }
+
+                    br.close();
+                    is.close();
+                    connection.disconnect();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }).start();
+
     }
 
     /**
@@ -138,11 +190,12 @@ public class LrcView extends View {
     public synchronized void updateTime(long time) {
         //避免重复绘制
         if (time < mNextTime || mIsEnd) {
+
             return;
         }
         for (int i = 0; i < mLrcTimes.size(); i++) {
+
             if (mLrcTimes.get(i) > time) {
-                Log.i(TAG, "newline ...");
                 mNextTime = mLrcTimes.get(i);
                 mCurrentLine = i < 1 ? 0 : i - 1;
                 //属性动画只能在主线程使用，因此用Handler转发操作
@@ -150,7 +203,6 @@ public class LrcView extends View {
                 break;
             } else if (i == mLrcTimes.size() - 1) {
                 //最后一行
-                Log.i(TAG, "end ...");
                 mCurrentLine = mLrcTimes.size() - 1;
                 mIsEnd = true;
                 //属性动画只能在主线程使用，因此用Handler转发操作

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.bean.VideoBean;
+import com.example.dllo.newbaidumusic.minterface.OnRecItemClick;
 import com.example.dllo.newbaidumusic.tool.BaseViewHolder;
 
 import java.util.List;
@@ -25,7 +26,11 @@ public class VideoFragmentRVAdapter extends RecyclerView.Adapter<BaseViewHolder>
 
     private List<VideoBean.ResultBean.MvListBean> data;
     private Context context;
+    private OnRecItemClick onRecItemClick;
 
+    public void setOnRecItemClick(OnRecItemClick onRecItemClick) {
+        this.onRecItemClick = onRecItemClick;
+    }
 
     public void setData(List<VideoBean.ResultBean.MvListBean> data) {
         this.data = data;
@@ -43,7 +48,13 @@ public class VideoFragmentRVAdapter extends RecyclerView.Adapter<BaseViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(BaseViewHolder holder, final int position) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onRecItemClick.onClick(position);
+            }
+        });
         holder.setText(R.id.tv_video_title,data.get(position).getTitle());
         holder.setText(R.id.tv_video_create,data.get(position).getArtist());
 //        Log.d("VideoFragmentRVAdapter", data.get(position).getArtist());

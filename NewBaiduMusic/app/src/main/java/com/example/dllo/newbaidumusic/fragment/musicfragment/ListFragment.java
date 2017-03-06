@@ -88,6 +88,8 @@ public class ListFragment extends AbsFragment implements AdapterView.OnItemClick
             transaction.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
 
             transaction.add(R.id.framlayout_mainfragment, WebFragment.newInstance(url));
+            transaction.addToBackStack(null);
+
             transaction.commit();
         }
 

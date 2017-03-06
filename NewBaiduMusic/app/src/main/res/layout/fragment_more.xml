@@ -18,14 +18,14 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="@dimen/toolbarheight">
 
                 <ImageView
                     android:id="@+id/img_more_signin"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/moreimgheight"
+                    android:layout_height="@dimen/moreimgheight"
                     android:background="@mipmap/icon_unsel"
-                    android:padding="10dp"
+                    android:padding="@dimen/margin10"
                     android:layout_margin="@dimen/margin10"
                     android:src="@mipmap/img_option_setting_user" />
 
@@ -33,34 +33,34 @@
                     android:id="@+id/tv_more_signin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="@dimen/margin20"
                     android:layout_toRightOf="@id/img_more_signin"
-                    android:text="立即登录"
+                    android:text="@string/signinnow"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/tooltvtextsize" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="@dimen/margin20"
                     android:layout_toRightOf="@id/img_more_signin"
-                    android:text="登陆后,自动为你同步歌曲"
+                    android:text="@string/denglutongbu"
                     android:layout_below="@id/tv_more_signin"
                     android:textColor="@color/graytext"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/moretvtextsize" />
 
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/margin20"
                     android:src="@mipmap/bt_option_setting_sign_in_normal" />
             </RelativeLayout>
 
             <ListView
                 android:id="@+id/listView_more"
                 android:layout_width="match_parent"
-                android:layout_height="416dp" />
+                android:layout_height="@dimen/morelistviewheight" />
 
             <include layout="@layout/foot_item" />
 
@@ -89,7 +89,7 @@
             android:gravity="center_vertical"
             android:text="更多"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="@dimen/tooltvtextsize" />
     </RelativeLayout>
 
 </RelativeLayout>

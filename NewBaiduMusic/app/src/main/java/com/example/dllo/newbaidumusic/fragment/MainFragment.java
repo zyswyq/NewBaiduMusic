@@ -103,12 +103,18 @@ public class MainFragment extends AbsFragment implements View.OnClickListener {
 //                transaction1.add(R.id.framlayout_mainfragment,new MoreFragment());
                 transaction1.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
                 transaction1.add(R.id.framlayout_mainfragment,new MoreFragment());
+                transaction1.addToBackStack(null);
+
                 transaction1.commit();
+
+
                 break;
             case R.id.imgbtn_main_search:
                 transaction2 = manager.beginTransaction();
                 transaction2.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
                 transaction2.add(R.id.framlayout_mainfragment,new SearchFragment());
+                transaction2.addToBackStack(null);
+
                 transaction2.commit();
                 break;
         }

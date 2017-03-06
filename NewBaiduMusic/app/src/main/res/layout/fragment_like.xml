@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="@dimen/like_height">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#55000000" />
+            android:background="@color/blankback" />
 
         <ImageView
             android:id="@+id/img_like_back"
@@ -56,7 +56,7 @@
         <TextView
             android:layout_below="@id/img_like_back"
             android:layout_margin="@dimen/margin10"
-            android:text="我喜欢的单曲"
+            android:text="@string/mylikesong"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_width="wrap_content"

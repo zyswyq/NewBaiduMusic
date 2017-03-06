@@ -81,7 +81,7 @@
         <ProgressBar
             android:id="@+id/progress_maintab"
             android:layout_width="match_parent"
-            android:layout_height="3dp"
+            android:layout_height="@dimen/progressbarheight"
             android:progressDrawable="@drawable/progressbar_color"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
     </LinearLayout>

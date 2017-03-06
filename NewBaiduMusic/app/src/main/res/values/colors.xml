@@ -14,6 +14,8 @@
     <color name="recommandtext1">#f60</color>
     <color name="recommandtext2">#6f0</color>
     <color name="recommandtext3">#12e3fa</color>
+    <color name="blankback">#55000000</color>
+    <color name="popback">#99000000</color>
 
 
 </resources>

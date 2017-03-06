@@ -29,7 +29,7 @@
 
                     <android.support.v4.view.ViewPager
                         android:id="@+id/viewpager_recommand"
-                        android:layout_width="320dp"
+                        android:layout_width="@dimen/recommandimgheight"
                         android:layout_height="match_parent"
                         android:clipChildren="false">
                     </android.support.v4.view.ViewPager>
@@ -99,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="歌手"
+                        android:text="@string/singer"
                         android:textColor="@color/mainFragmentTablayout" />
 
                     <TextView
@@ -107,7 +107,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="歌曲分类"
+                        android:text="@string/songbind"
                         android:textColor="@color/mainFragmentTablayout" />
 
                     <TextView
@@ -115,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="电台"
+                        android:text="@string/radio"
                         android:textColor="@color/mainFragmentTablayout" />
 
                     <TextView
@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="会员专区"
+                        android:text="@string/vipplace"
                         android:textColor="@color/mainFragmentTablayout" />
                 </LinearLayout>
 

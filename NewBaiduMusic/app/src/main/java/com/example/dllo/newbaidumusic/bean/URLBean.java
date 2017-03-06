@@ -113,5 +113,8 @@ public class URLBean {
     public static String ONLINESONGDATA1="http://tingapi.ting.baidu.com/v1/restserver/ting?from=webapp_music&method=baidu.ting.song.play&format=json&callback=&songid=";
     public static String ONLINESONGDATA2="&_=1413017198449";
 
+    public static String MVDATA1="http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&provider=11%2C12&method=baidu.ting.mv.playMV&format=json&mv_id=";
+    public static String MVDATA2="&song_id=&definition=0";
+
 
 }

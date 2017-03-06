@@ -1,8 +1,11 @@
 package com.example.dllo.newbaidumusic.fragment.musicfragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,7 +20,9 @@ import com.example.dllo.newbaidumusic.adapter.VideoFragmentRVAdapter;
 import com.example.dllo.newbaidumusic.bean.URLBean;
 import com.example.dllo.newbaidumusic.bean.VideoBean;
 import com.example.dllo.newbaidumusic.fragment.AbsFragment;
+import com.example.dllo.newbaidumusic.fragment.WebFragment;
 import com.example.dllo.newbaidumusic.minterface.CallBack;
+import com.example.dllo.newbaidumusic.minterface.OnRecItemClick;
 import com.example.dllo.newbaidumusic.tool.NetTool;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
@@ -32,10 +37,13 @@ import java.util.List;
  * Created by dllo on 17/2/9.
  */
 
-public class VideoFragment extends AbsFragment implements View.OnClickListener {
+public class VideoFragment extends AbsFragment implements View.OnClickListener, OnRecItemClick {
 
     private RecyclerView recyclerView;
     private TwinklingRefreshLayout refreshLayout;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
+
 
     private TextView menu,newTv,hotTv;
     private String selectMenu="全部";
@@ -54,7 +62,7 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         data1 = new ArrayList<VideoBean.ResultBean.MvListBean>();
-
+        manager=getActivity().getSupportFragmentManager();
         refreshLayout=bindView(R.id.twink_video);
         recyclerView=bindView(R.id.recycler_videofragment);
         menu=bindView(R.id.tv_songmenu_menu);
@@ -90,6 +98,7 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
             }
         });
         adapter.setContext(context);
+        adapter.setOnRecItemClick(this);
         getHotDate();
         recyclerView.setLayoutManager(new GridLayoutManager(context,2));
         recyclerView.setAdapter(adapter);
@@ -191,6 +200,17 @@ public class VideoFragment extends AbsFragment implements View.OnClickListener {
                 }
                 break;
         }
+
+    }
+
+    //item点击事件
+    @Override
+    public void onClick(int position) {
+//        NetTool.getInstance().startRequest();
+
+//        transaction=manager.beginTransaction();
+//        transaction.add(R.id.framlayout_mainfragment,WebFragment.newInstance("http://dispatcher.video.qiyi.com/common/shareplayer.html?vid=81ddc81a7c56a7d3bf1025cad3bd7b7c&tvid=626948300"));
+//        transaction.commit();
 
     }
 }

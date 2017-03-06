@@ -123,7 +123,28 @@
     <dimen name="mainabsinger_textsize">10sp</dimen>
     <dimen name="maintab_tvlength">150dp</dimen>
 
+    <dimen name="progressbarheight">3dp</dimen>
+
+    <dimen name="like_height">100dp</dimen>
+
+    <dimen name="appbarlayoutheight">270dp</dimen>
+    <dimen name="toolbarheight">100dp</dimen>
+    <dimen name="toollinearheight">50dp</dimen>
+    <dimen name="toollinearmargin">220dp</dimen>
+    <dimen name="toolimgheight">20dp</dimen>
+    <dimen name="toolimgheight2">30dp</dimen>
+    <dimen name="tooltvtextsize">20sp</dimen>
+    <dimen name="toolimgmargin">10dp</dimen>
+    <dimen name="morelistviewheight">416dp</dimen>
+    <dimen name="moretvtextsize">15sp</dimen>
+
+    <dimen name="moreimgheight">80dp</dimen>
+
+    <dimen name="recommandimgheight">320dp</dimen>
 
 
+    <dimen name="notificationheight">64dp</dimen>
+
+    <dimen name="pop350">350dp</dimen>
 
 </resources>

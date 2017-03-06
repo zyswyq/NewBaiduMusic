@@ -93,6 +93,16 @@ public class SongService extends Service {
 
     public class SongBinder extends Binder {
 
+        public String getTitle(){
+            return localdata.get(index).getSongname();
+        }
+
+        public String getSinger(){
+            return localdata.get(index).getSingerName();
+        }
+
+
+
         public void setUrlDate(List<String> data){
             UrlData=data;
         }
@@ -180,8 +190,10 @@ public class SongService extends Service {
 
         //获取总时长
         public long getDuration() {
-            return localdata.get(index).getDuration();
-
+            if (localdata.size()>index){
+                return localdata.get(index).getDuration();
+            }
+            return 0;
 
             //TODO
             //判断后返回
@@ -261,8 +273,6 @@ public class SongService extends Service {
             Intent sendMySong = new Intent("my_song");
             sendMySong.putExtra("songBean", (Serializable) localdata.get(index));
             sendBroadcast(sendMySong);
-
-
         }
 
 

@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/img_recommand_vppic"
-        android:layout_width="320dp"
+        android:layout_width="@dimen/recommandimgheight"
         android:layout_height="@dimen/recommand_vpheight"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"/>
+        android:paddingLeft="@dimen/margin5"
+        android:paddingRight="@dimen/margin5"/>
 </LinearLayout>

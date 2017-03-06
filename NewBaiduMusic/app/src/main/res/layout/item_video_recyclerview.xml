@@ -16,7 +16,6 @@
         android:layout_width="@dimen/songmenu_item_mainimgwidth"
         android:textSize="@dimen/songmenu_item_titlesize"
         android:layout_height="wrap_content"
-        android:text="dsdasdsa"
         android:textColor="@color/black"
         android:maxLines="2"
         android:layout_marginTop="@dimen/songmenu_item_mainimgmargin"
@@ -30,7 +29,6 @@
 
         android:layout_height="wrap_content"
         android:textColor="@color/graytext"
-        android:text="dsadas"
         />
 
 </LinearLayout>

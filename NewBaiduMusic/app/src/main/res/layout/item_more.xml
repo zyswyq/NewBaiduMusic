@@ -4,8 +4,8 @@
     android:layout_height="@dimen/mainfragment_tablayout_height">
     <ImageView
         android:id="@+id/img_item_morefragment_img"
-        android:layout_width="50dp"
-        android:padding="15dp"
+        android:layout_width="@dimen/toollinearheight"
+        android:padding="@dimen/margin15"
         android:layout_height="@dimen/mainfragment_tablayout_height"
         android:src="@mipmap/icon_option_setting_my_message"/>
 
@@ -20,5 +20,5 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@mipmap/triangle"
-        android:layout_margin="10dp"/>
+        android:layout_margin="@dimen/margin10"/>
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.dllo.newbaidumusic.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.dllo.newbaidumusic.R;
 import com.example.dllo.newbaidumusic.bean.OnLineSongBean;
+import com.example.dllo.newbaidumusic.view.LrcView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +26,16 @@ public class MainTabPopVpAdapter extends PagerAdapter{
     private List<View> viewList = new ArrayList<View>();
     private Context context;
     private OnLineSongBean data;
+    private LrcView lrcView;
+
+    public LrcView getLrcView() {
+        return lrcView;
+    }
+
+    public void setLrcView(LrcView lrcView) {
+        this.lrcView = lrcView;
+        notifyDataSetChanged();
+    }
 
     public void setData(OnLineSongBean data) {
         this.data = data;
@@ -49,6 +62,10 @@ public class MainTabPopVpAdapter extends PagerAdapter{
        switch (position){
            case 0:
                v = LayoutInflater.from(context).inflate(R.layout.vp_songsinger, container, false);
+               TextView stitle= (TextView) v.findViewById(R.id.tv_popvpsongtitle);
+               TextView ssinger= (TextView) v.findViewById(R.id.tv_popvpsongsinger);
+               stitle.setText(data.getSonginfo().getAlbum_title());
+               ssinger.setText(data.getSonginfo().getAuthor());
                break;
            case 1:
                v = LayoutInflater.from(context).inflate(R.layout.vp_main, container, false);
@@ -66,6 +83,8 @@ public class MainTabPopVpAdapter extends PagerAdapter{
                break;
            case 2:
                v = LayoutInflater.from(context).inflate(R.layout.vp_lrc, container, false);
+               lrcView = (LrcView) v.findViewById(R.id.lrcview_pop);
+               lrcView.loadLrc(data.getSonginfo().getLrclink(),0);
                break;
        }
 

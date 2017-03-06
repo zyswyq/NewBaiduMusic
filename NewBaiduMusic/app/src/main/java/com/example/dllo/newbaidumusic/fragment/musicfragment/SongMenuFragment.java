@@ -68,6 +68,7 @@ public class SongMenuFragment extends AbsFragment implements View.OnClickListene
                 transaction=manager.beginTransaction();
                 transaction.setCustomAnimations(R.anim.page_slide_out,R.anim.no_move);
                 transaction.add(R.id.framlayout_mainfragment, SongMenuDetilFragment.newInstance(URLBean.SONGMENUDETIL1+data.getDiyInfo().get(position).getList_id()+URLBean.SONGMENUDETIL2));
+                transaction.addToBackStack(null);
                 transaction.commit();
 
             }
